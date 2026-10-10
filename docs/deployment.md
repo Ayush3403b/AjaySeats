@@ -12,7 +12,7 @@ Status: configuration is written but **not deployed or verified against a live e
 
 ## Web (Vercel)
 
-- `apps/web/vercel.json` builds `@pcs/web` into `dist` and rewrites unknown paths to `index.html`.
+- `apps/web/vercel.json` builds `@pcs/shared` (its `dist` is not committed), then `@pcs/web` into `dist`, and rewrites unknown paths to `index.html`.
 - Environment: `VITE_API_BASE_URL` (use `/api/v1` with the rewrite), `VITE_SITE_URL` (canonical site URL), `VITE_DATA_SOURCE=api`. Never place secrets in `VITE_*` variables; they are public.
 
 ### Cross-origin requirement
