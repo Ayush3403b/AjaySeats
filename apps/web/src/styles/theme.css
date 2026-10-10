@@ -1,0 +1,63 @@
+/*
+ * DESIGN TOKENS. The single place to change the palette, surfaces and fonts.
+ * tailwind.config.ts maps every token below; components never hard-code brand colours.
+ * Contrast: body text uses --text / --text-muted on solid --bg / --surface only (WCAG AA).
+ * Gradients are decorative and never sit behind body copy.
+ */
+
+/* Brand + material tokens are shared by both modes. */
+:root {
+  --primary: #ff6b35; /* sunset orange: primary CTAs. Pair with --on-primary text. */
+  --secondary: #7c3aed; /* royal violet */
+  --accent: #06b6d4; /* aqua: focus rings and PVC */
+  --highlight: #a3e635; /* lime: fabric */
+  --premium: #f59e0b; /* gold: leather */
+  --sale: #f43f5e; /* rose: sale badges */
+  --whatsapp: #25d366;
+
+  --material-leather: #f59e0b;
+  --material-leatherette: #7c3aed;
+  --material-pvc: #06b6d4;
+  --material-fabric: #a3e635;
+  --material-other: #ff6b35;
+
+  --font-heading: 'Manrope', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --on-primary: #0b1020;
+  --focus-ring: var(--accent);
+}
+
+/* Dark mode is the default. */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-deep: #0b1020; /* midnight */
+  --bg-surface: #141a33;
+  --bg-elevated: #1c2447;
+  --bg: var(--bg-deep);
+  --surface: var(--bg-surface);
+  --card: var(--bg-elevated);
+  --text: #f5f7ff;
+  --text-muted: #b4bed3;
+  --border: rgba(255, 255, 255, 0.12);
+  --glass: rgba(20, 26, 51, 0.6);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg-light: #f7f8fc;
+  --bg-card-light: #ffffff;
+  --bg: var(--bg-light);
+  --surface: var(--bg-card-light);
+  --card: var(--bg-card-light);
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: rgba(15, 23, 42, 0.12);
+  --glass: rgba(255, 255, 255, 0.7);
+}
+
+/* Dark-mode surfaces also need the light tokens defined so Tailwind classes resolve everywhere. */
+:root {
+  --bg-light: #f7f8fc;
+  --bg-card-light: #ffffff;
+}

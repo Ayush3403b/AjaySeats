@@ -1,0 +1,29 @@
+{
+  "name": "premium-seat-covers",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bilingual (EN/HI) website and admin for a premium car seat-cover manufacturer. Monorepo: apps/web, services/api, packages/shared.",
+  "workspaces": [
+    "packages/shared",
+    "services/api",
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "build:shared": "npm run build -w @pcs/shared",
+    "predev": "npm run build:shared",
+    "dev": "concurrently -n API,WEB -c magenta,cyan \"npm run dev -w @pcs/api\" \"npm run dev -w @pcs/web\"",
+    "build": "npm run build:shared && npm run build -w @pcs/api && npm run build -w @pcs/web",
+    "typecheck": "npm run build:shared && npm run typecheck -w @pcs/api && npm run typecheck -w @pcs/web",
+    "test": "npm run build:shared && npm run test -w @pcs/api && npm run test -w @pcs/web",
+    "seed": "npm run seed -w @pcs/api",
+    "customers:sync": "npm run customers:sync -w @pcs/api",
+    "audit:deps": "npm audit --omit=dev --audit-level=high"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,0 +1,763 @@
+{
+  "app": {
+    "name": "Premium Seat Covers",
+    "tagline": "Crafted for Comfort. Built for Every Drive."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "theme": "Switch between light and dark mode",
+    "progress": "Page scroll progress",
+    "gallery": "Product images",
+    "previous": "Previous",
+    "next": "Next",
+    "dismiss": "Dismiss",
+    "breadcrumb": "Breadcrumb"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "materials": "Materials",
+    "about": "About",
+    "contact": "Contact",
+    "quote": "Get a Quote",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "allProducts": "All products",
+    "byCategory": "Browse by category",
+    "whatsapp": "WhatsApp",
+    "quoteBasket": "Quote list",
+    "quoteBasketCount": "{{count}} in quote list"
+  },
+  "demo": {
+    "banner": "Demo data: products, prices and replies are sample content. Quote requests are not saved."
+  },
+  "hero": {
+    "eyebrow": "Leather · Leatherette · PVC · Fabric",
+    "title": "Crafted for Comfort. Built for Every Drive.",
+    "subtitle": "Choose a material and colour, see public prices, and request a quote in minutes, or chat with us on WhatsApp.",
+    "explore": "Explore Products",
+    "quote": "Get a Quote",
+    "scroll": "Scroll",
+    "floatLeather": "Leather",
+    "floatPvc": "PVC",
+    "floatFabric": "Fabric"
+  },
+  "home": {
+    "featuredTitle": "Featured collection",
+    "featuredSubtitle": "Public list prices. Your final quotation depends on your vehicle and selections.",
+    "viewAll": "View all products",
+    "colourTitle": "Try a colour",
+    "colourSubtitle": "Pick a colour and watch the seat update.",
+    "colourLabel": "Colour",
+    "seatCushion": "Seat cushion",
+    "seatBack": "Seat back",
+    "materialsTitle": "Five materials, one standard of finish",
+    "materialsSubtitle": "Each material has its own colour code, so you can compare quickly.",
+    "makesTitle": "Listed for these car makes",
+    "makesSubtitle": "Fitment depends on the exact model and year. Confirm before you buy.",
+    "emptyFeatured": "Featured products will appear here once they are published.",
+    "whatsappTitle": "Prefer to talk? Message us on WhatsApp.",
+    "whatsappBody": "Share your car make, model and year. We reply with options and a quotation.",
+    "whatsappCta": "Chat on WhatsApp",
+    "quoteCta": "Request a quote"
+  },
+  "catalogue": {
+    "title": "All seat covers",
+    "subtitle": "Filter by material, colour and car. Prices shown are public list prices.",
+    "search": "Search by name or SKU",
+    "searchPlaceholder": "e.g. leather full set or DEMO-LTH",
+    "results": "{{count}} products",
+    "noResults": "No products match these filters.",
+    "clear": "Clear all",
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "all": "All",
+      "material": "Material",
+      "colour": "Colour",
+      "make": "Car make",
+      "model": "Car model",
+      "anyMake": "Any make",
+      "anyModel": "Any model",
+      "price": "Maximum price",
+      "apply": "Show results",
+      "show": "Show {{count}} results",
+      "any": "Any"
+    },
+    "sort": {
+      "label": "Sort by",
+      "latest": "Latest",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low"
+    },
+    "pagination": {
+      "prev": "Previous page",
+      "next": "Next page",
+      "page": "Page {{page}} of {{total}}"
+    },
+    "openFilters": "Filters"
+  },
+  "product": {
+    "sku": "SKU",
+    "material": "Material",
+    "colours": "Colours",
+    "stitching": "Stitching options",
+    "fitment": "Fitment",
+    "fitmentYears": "{{from}} to {{to}}",
+    "fitmentFrom": "From {{from}}",
+    "regularPrice": "Regular price",
+    "salePrice": "Sale price",
+    "availability": "Availability",
+    "in_stock": "In stock",
+    "made_to_order": "Made to order",
+    "unavailable": "Currently unavailable",
+    "getQuote": "Get a quote",
+    "whatsapp": "Ask on WhatsApp",
+    "whatsappUnavailable": "WhatsApp is not configured yet",
+    "addToQuote": "Add to quote",
+    "addedToQuote": "Added to your quote list",
+    "inQuote": "In your quote list",
+    "specs": "Specifications",
+    "description": "Description",
+    "related": "You may also like",
+    "noFitment": "Fitment is not listed for this product. Ask us before you order.",
+    "gallery": "Product gallery",
+    "swatch": "Select colour {{name}}",
+    "back": "Back to products",
+    "priceNote": "Prices are list prices in INR and may change. Your final quotation is confirmed by our team.",
+    "noStitching": "No stitching options are listed.",
+    "notFound": "This product is not available.",
+    "viewDetails": "View details",
+    "zoom": "Hover or tap to zoom",
+    "alreadyInQuote": "Already in your quote list",
+    "quoteFull": "Your quote list is full (maximum 10). Remove an item first."
+  },
+  "materials": {
+    "title": "Materials",
+    "subtitle": "Choose the material that suits your car, your budget and the look you want.",
+    "jump": "Jump to material",
+    "leather": {
+      "name": "Leather",
+      "body": "A premium, natural-look finish with a rich feel. The top option in our range.",
+      "finish": "Grained, polished finish",
+      "feel": "Rich and supple",
+      "bestFor": "Premium cabins and buyers who want the finest look"
+    },
+    "leatherette": {
+      "name": "Leatherette",
+      "body": "A synthetic leather alternative with a smooth, even finish and a wide colour range.",
+      "finish": "Smooth, uniform surface",
+      "feel": "Soft and consistent",
+      "bestFor": "A leather look with more colour choice"
+    },
+    "pvc": {
+      "name": "PVC",
+      "body": "Smooth, practical covers with a clean finish that is easy to wipe down.",
+      "finish": "Clean, glossy or matte surface",
+      "feel": "Firm and smooth",
+      "bestFor": "Practical everyday use and easy cleaning"
+    },
+    "fabric": {
+      "name": "Fabric",
+      "body": "A soft textile finish for a comfortable, understated cabin look.",
+      "finish": "Woven textile texture",
+      "feel": "Soft and breathable",
+      "bestFor": "A relaxed, understated interior"
+    },
+    "other": {
+      "name": "Other",
+      "body": "Special materials and mesh options for specific requirements. Ask us.",
+      "finish": "Varies by material",
+      "feel": "Varies by material",
+      "bestFor": "Specific requirements. Ask us first."
+    },
+    "compareTitle": "Quick comparison",
+    "finish": "Finish",
+    "feel": "Feel",
+    "bestFor": "Best for",
+    "closeUp": "Texture close-up",
+    "viewProducts": "See products in {{name}}"
+  },
+  "about": {
+    "title": "Made to order, checked by hand",
+    "subtitle": "A focused maker of seat covers. We quote every request individually, so you know exactly what you are getting.",
+    "stepOne": "Share your car",
+    "stepOneBody": "Tell us the make, model, year and city.",
+    "stepTwo": "Pick material and colour",
+    "stepTwoBody": "Compare our five materials and colour options.",
+    "stepThree": "Receive a quotation",
+    "stepThreeBody": "We reply with a quotation for your selection. Nothing is final until you confirm.",
+    "stepFour": "Confirm, then we make it",
+    "stepFourBody": "Once you confirm the quotation, we begin production.",
+    "cta": "Start a quote request"
+  },
+  "quote": {
+    "title": "Request a quote",
+    "subtitle": "Tell us about your car and what you need. We reply with a quotation. This is a request, not an order.",
+    "steps": {
+      "customer": "Customer",
+      "vehicle": "Vehicle",
+      "products": "Products",
+      "review": "Review"
+    },
+    "progress": "Step {{current}} of {{total}}",
+    "fields": {
+      "name": "Full name",
+      "countryCode": "Country code",
+      "mobile": "Mobile number",
+      "language": "Preferred language",
+      "city": "City",
+      "make": "Car make",
+      "model": "Car model",
+      "year": "Manufacturing year",
+      "product": "Add a product",
+      "chooseProduct": "Choose a product",
+      "material": "Material",
+      "colour": "Colour",
+      "anyColour": "Any colour",
+      "quantity": "Quantity",
+      "message": "Message (optional)",
+      "consent": "I agree to receive product updates on WhatsApp or phone. I can opt out at any time.",
+      "anyMaterial": "Any material",
+      "website": "Website (leave empty)"
+    },
+    "items": {
+      "empty": "No products yet. Add at least one product.",
+      "remove": "Remove",
+      "add": "Add"
+    },
+    "actions": {
+      "next": "Continue",
+      "back": "Back",
+      "submit": "Send quote request",
+      "submitting": "Sending…"
+    },
+    "review": {
+      "title": "Check your details",
+      "notice": "Sending creates a quote request. We confirm pricing and availability before anything is ordered."
+    },
+    "success": {
+      "title": "Request received",
+      "body": "Keep your reference number. We will reply with a quotation.",
+      "reference": "Reference",
+      "whatsapp": "Follow up on WhatsApp",
+      "new": "Start another request",
+      "demo": "Demo mode: nothing was saved. Connect the API to store requests."
+    },
+    "errors": {
+      "required": "This field is required",
+      "name": "Enter your full name",
+      "mobile": "Enter a valid mobile number",
+      "year": "Enter a year between 1980 and {{max}}",
+      "city": "Enter your city",
+      "makeModel": "Enter the car make and model",
+      "items": "Add at least one product",
+      "quantity": "Quantity must be between 1 and 500",
+      "prefill": "We could not load the product you selected. Choose it from the list below."
+    },
+    "labels": {
+      "name": "Name",
+      "mobile": "Mobile",
+      "language": "Language",
+      "city": "City",
+      "vehicle": "Vehicle",
+      "products": "Products",
+      "material": "Material",
+      "colour": "Colour",
+      "message": "Message"
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "The quickest way to reach us is WhatsApp. For a formal quotation, use the quote form.",
+    "whatsappTitle": "WhatsApp",
+    "whatsappBody": "Send your car details, and photos of your seats if you have them.",
+    "whatsappCta": "Open WhatsApp",
+    "whatsappMissing": "The WhatsApp number is not configured yet.",
+    "quoteTitle": "Formal quotation",
+    "quoteBody": "Get a structured quotation for your vehicle and selection.",
+    "quoteCta": "Request a quote"
+  },
+  "legal": {
+    "privacyTitle": "Privacy notice",
+    "termsTitle": "Terms of use",
+    "updated": "Last updated: {{date}}",
+    "draft": "Draft for owner review. Have the final text checked by counsel before you publish it.",
+    "privacy": {
+      "sections": [
+        {
+          "h": "Who we are",
+          "p": "Premium Seat Covers makes car seat covers to order. This notice explains what personal information we collect through this website and why."
+        },
+        {
+          "h": "What we collect",
+          "p": "When you request a quote we collect your name, mobile number with country code, city, car make, model and year, the products and options you choose, an optional message, and whether you agree to marketing messages. We also keep a record of when you gave or withheld that consent. We do not collect payment details on this website."
+        },
+        {
+          "h": "Why we use it",
+          "p": "We use this information to prepare and send you a quotation, to answer questions about your request, and, only if you opt in, to send product updates. We do not sell your information."
+        },
+        {
+          "h": "WhatsApp and phone",
+          "p": "If you open a WhatsApp chat from this site, the conversation happens in WhatsApp under its own terms. We contact you on WhatsApp or by phone only for the request you made, or for updates you have agreed to receive."
+        },
+        {
+          "h": "How long we keep it",
+          "p": "We keep quote requests for as long as needed to answer them and keep our records. The business owner confirms the exact retention period before launch. You can ask us to delete your request at any time."
+        },
+        {
+          "h": "Your choices",
+          "p": "You can withdraw marketing consent at any time by messaging us on WhatsApp. Withdrawal takes effect straight away and you will not receive marketing messages after that."
+        },
+        {
+          "h": "Contact",
+          "p": "For privacy questions or deletion requests, message us on WhatsApp using the number on the contact page."
+        }
+      ]
+    },
+    "terms": {
+      "sections": [
+        {
+          "h": "What this site is for",
+          "p": "This website lets you browse seat covers, see public list prices and request a quotation. Submitting the request does not place an order."
+        },
+        {
+          "h": "Prices",
+          "p": "Prices are list prices in Indian rupees and may change. Your final quotation depends on your vehicle, material, colour and quantity, and is confirmed by us in writing."
+        },
+        {
+          "h": "Quotations and orders",
+          "p": "A quote request is an enquiry. An order exists only after you confirm a quotation we have sent you and we accept it. Until then, nothing is final."
+        },
+        {
+          "h": "Fitment",
+          "p": "Fitment depends on the exact make, model and year. Confirm fitment with us before you order, especially for model years that are not listed."
+        },
+        {
+          "h": "Images and colours",
+          "p": "Colours and images on screen may differ from the finished product because of screen settings and material batches."
+        },
+        {
+          "h": "Liability",
+          "p": "To the extent the law allows, our liability for an accepted order is limited to the price of that order."
+        },
+        {
+          "h": "Changes",
+          "p": "We may update these terms. The date at the top of this page shows the latest version."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Premium seat covers, made to order.",
+    "shop": "Shop",
+    "company": "Company",
+    "help": "Help",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "This road ends here",
+    "body": "The page you were looking for does not exist or has moved.",
+    "home": "Back home"
+  },
+  "states": {
+    "loading": "Loading…",
+    "errorTitle": "Something went wrong",
+    "errorBody": "We could not load this. Check your connection and try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Not found",
+    "notFoundBody": "We could not find that item.",
+    "emptyTitle": "Nothing here yet",
+    "offline": "You appear to be offline."
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "NETWORK": "Network problem. Check your connection.",
+    "VALIDATION_FAILED": "Please check the highlighted fields.",
+    "RATE_LIMITED": "Too many requests. Please wait and try again.",
+    "SUBMISSION_REJECTED": "This form could not be accepted. Please try again.",
+    "NOT_FOUND": "We could not find that.",
+    "INTERNAL": "Something went wrong on our side."
+  },
+  "whatsapp": {
+    "productMessage": "Hello, I am interested in {{name}} (SKU: {{sku}}). Please share a quotation for my car.",
+    "quoteFollowUp": "Hello, I submitted quote request {{reference}}. Please let me know the next steps.",
+    "general": "Hello, I would like a quote for a seat cover for my car."
+  },
+  "seo": {
+    "homeTitle": "Premium Seat Covers | Leather, Leatherette, PVC and Fabric",
+    "homeDescription": "Premium car seat covers in leather, leatherette, PVC and fabric. Public prices, colour options and quote requests in English and Hindi.",
+    "productsTitle": "Seat cover catalogue",
+    "productsDescription": "Browse seat covers by material, colour and car make. Public prices in INR.",
+    "materialsTitle": "Seat cover materials",
+    "materialsDescription": "Compare leather, leatherette, PVC, fabric and other seat cover materials.",
+    "aboutTitle": "About us",
+    "aboutDescription": "How we make and quote seat covers, made to order.",
+    "quoteTitle": "Request a seat cover quote",
+    "quoteDescription": "Send your car details and product choices to request a quotation. This is a request, not an order.",
+    "contactTitle": "Contact",
+    "contactDescription": "Contact us on WhatsApp or request a formal quotation.",
+    "privacyTitle": "Privacy notice",
+    "termsTitle": "Terms of use",
+    "notFoundTitle": "Page not found"
+  },
+  "admin": {
+    "title": "Admin",
+    "role": {
+      "owner": "Owner",
+      "staff": "Staff"
+    },
+    "nav": {
+      "label": "Admin navigation",
+      "products": "Products",
+      "inquiries": "Inquiries",
+      "signOut": "Sign out",
+      "customers": "Customers",
+      "campaigns": "Campaigns"
+    },
+    "login": {
+      "title": "Staff sign in",
+      "subtitle": "Sign in to manage products and enquiries.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…"
+    },
+    "demo": {
+      "title": "Admin needs the live API",
+      "badge": "Demo mode: nothing can be saved here.",
+      "body": "This build is running with demo data. Admin changes are only saved when the site is connected to the live API, so they are not simulated here.",
+      "home": "Back to the website"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "tooLong": "This text is too long.",
+      "slug": "Use 2–80 lowercase letters, numbers and single hyphens, e.g. leather-seat-covers.",
+      "sku": "Use 2–40 letters, numbers or hyphens.",
+      "price": "Enter a rupee amount with up to two decimals, e.g. 4499 or 4499.50.",
+      "saleBelowRegular": "The sale price must be lower than the regular price.",
+      "colour": "Use a colour in the form #1A2B3C.",
+      "max": "You have reached the maximum number of entries.",
+      "year": "Enter a four-digit year.",
+      "yearOrder": "The last year must not be before the first year.",
+      "email": "Enter a valid email address.",
+      "passwordShort": "Password must be at least 8 characters.",
+      "checkFields": "Some fields need attention. Check the highlighted fields and try again.",
+      "generic": "Something went wrong. Please try again.",
+      "VALIDATION_FAILED": "Please check the highlighted fields.",
+      "NETWORK": "Could not reach the server. Check your connection and try again.",
+      "RATE_LIMITED": "Too many attempts. Wait a few minutes, then try again.",
+      "INVALID_CREDENTIALS": "Email or password is incorrect.",
+      "UNAUTHORIZED": "Your session has ended. Sign in again.",
+      "CSRF_INVALID": "Your session needs refreshing. Reload the page and try again.",
+      "FORBIDDEN": "You do not have permission for this action.",
+      "DUPLICATE": "This slug or SKU is already used by another product.",
+      "NOT_FOUND": "That item no longer exists.",
+      "INTERNAL": "The server had a problem. Please try again shortly.",
+      "SLUG_TAKEN": "That URL slug is already used by another product.",
+      "SKU_TAKEN": "That SKU is already used by another product.",
+      "PRODUCT_ARCHIVED": "Restore this product before publishing it.",
+      "PRODUCT_REFERENCED": "This product is linked to inquiries, so it cannot be deleted. Archive it instead.",
+      "INVALID_ID": "That link is not valid.",
+      "MALFORMED_JSON": "The request could not be read. Please try again.",
+      "PAYLOAD_TOO_LARGE": "The data is too large to save.",
+      "NOT_ENABLED": "This feature is not available yet.",
+      "UPLOAD_FAILED": "The image could not be uploaded. Try a smaller JPEG, PNG or WebP file.",
+      "CAMPAIGN_NOT_DRAFT": "This campaign has already been prepared and can no longer be changed.",
+      "CAMPAIGN_NOT_PREPARED": "Prepare the campaign before working with its recipients.",
+      "CUSTOMER_NOT_ELIGIBLE": "This customer has not consented to marketing or has opted out, so this action is not allowed.",
+      "campaignName": "Use at least 3 characters for the campaign name.",
+      "campaignMessage": "Write a message of at least 10 characters.",
+      "cityShort": "Use at least 2 characters, or leave the city empty.",
+      "imageHost": "Upload the image again from this form."
+    },
+    "products": {
+      "title": "Products",
+      "new": "New product",
+      "search": "Search products",
+      "searchPlaceholder": "Search by name, SKU or slug",
+      "statusFilter": "Filter by status",
+      "statusAll": "All statuses",
+      "published": "Published",
+      "draft": "Draft",
+      "archived": "Archived",
+      "count": "{{n}} products",
+      "empty": "No products match these filters.",
+      "regular": "Regular price",
+      "sale": "Sale price",
+      "noSale": "No sale",
+      "savePrices": "Save prices",
+      "priceSaved": "Price saved. The public site shows it now.",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published_done": "Product published.",
+      "unpublished": "Product moved to draft.",
+      "archive": "Archive",
+      "restore": "Restore",
+      "archived_done": "Product archived.",
+      "restored": "Product restored.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Yes, delete permanently",
+      "deleted": "Product deleted.",
+      "cancel": "Cancel"
+    },
+    "form": {
+      "title": "Product form",
+      "newTitle": "New product",
+      "editTitle": "Edit product",
+      "backToList": "Back to products",
+      "saved": "Changes saved.",
+      "created": "Product created. It stays a draft until you publish it.",
+      "save": "Save product",
+      "saving": "Saving…",
+      "add": "Add",
+      "remove": "Remove",
+      "sections": {
+        "basics": "Basics",
+        "text": "Description",
+        "pricing": "Pricing",
+        "colours": "Colours",
+        "vehicles": "Compatible vehicles",
+        "stitching": "Stitching",
+        "seo": "Search listing (SEO)",
+        "images": "Product images"
+      },
+      "empty": {
+        "colours": "No colours yet.",
+        "vehicles": "No vehicles yet."
+      },
+      "fields": {
+        "sku": "SKU",
+        "slug": "URL slug",
+        "category": "Category",
+        "chooseCategory": "Choose a category",
+        "material": "Material",
+        "availability": "Availability",
+        "published": "Published on the website",
+        "featured": "Featured on the home page",
+        "nameEn": "Name (English)",
+        "nameHi": "Name (Hindi)",
+        "descriptionEn": "Description (English)",
+        "descriptionHi": "Description (Hindi)",
+        "price": "Regular price (₹)",
+        "salePrice": "Sale price (₹)",
+        "colourEn": "Colour name (English)",
+        "colourHi": "Colour name (Hindi)",
+        "colourCode": "Swatch",
+        "make": "Make",
+        "model": "Model",
+        "yearFrom": "From year",
+        "yearTo": "To year (optional)",
+        "stitchingEn": "Stitching (English)",
+        "stitchingHi": "Stitching (Hindi)",
+        "seoTitleEn": "SEO title (English)",
+        "seoTitleHi": "SEO title (Hindi)",
+        "seoDescEn": "SEO description (English)",
+        "seoDescHi": "SEO description (Hindi)"
+      },
+      "hints": {
+        "sku": "2–40 letters, numbers or hyphens. Saved in capitals.",
+        "slug": "Lowercase words joined with hyphens. Used in the product link.",
+        "price": "Prices are stored in paise. Enter rupees, e.g. 4499.50.",
+        "rupees": "Rupees, up to two decimals.",
+        "salePrice": "Leave empty for no sale. Must be lower than the regular price."
+      },
+      "images": {
+        "add": "Add image",
+        "uploading": "Uploading…",
+        "help": "JPEG, PNG or WebP, up to 5 MB each, up to 10 images. The first image is the main one shown on the site.",
+        "none": "No images yet. The product will show a placeholder.",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "remove": "Remove",
+        "altEn": "Image description (English)",
+        "altHi": "Image description (Hindi)",
+        "typeError": "Use a JPEG, PNG or WebP image.",
+        "sizeError": "This image is larger than 5 MB.",
+        "unavailable": "Image uploads are not set up on this server yet. You can save the product without images."
+      }
+    },
+    "inquiries": {
+      "title": "Inquiries",
+      "search": "Search inquiries",
+      "searchPlaceholder": "Search by reference, name, phone or city",
+      "statusFilter": "Filter by status",
+      "statusAll": "All statuses",
+      "count": "{{n}} inquiries",
+      "itemCount": "{{n}} items",
+      "empty": "No inquiries match these filters.",
+      "status": {
+        "new": "New",
+        "contacted": "Contacted",
+        "quotation_sent": "Quotation sent",
+        "confirmed": "Confirmed",
+        "closed": "Closed",
+        "spam": "Spam"
+      }
+    },
+    "detail": {
+      "title": "Inquiry",
+      "backToList": "Back to inquiries",
+      "actions": "Actions",
+      "phone": "Phone",
+      "city": "City",
+      "language": "Preferred language",
+      "langEn": "English",
+      "langHi": "Hindi",
+      "received": "Received",
+      "vehicle": "Vehicle",
+      "materialColour": "Material and colour",
+      "marketing": "Marketing consent",
+      "yes": "Yes",
+      "no": "No",
+      "notGiven": "Not given",
+      "message": "Customer message",
+      "items": "Requested products",
+      "noItems": "No products were attached.",
+      "quantity": "Quantity: {{n}}",
+      "snapshotSale": "sale",
+      "history": "History",
+      "statusChanges": "Status changes",
+      "notes": "Staff notes",
+      "noNotes": "No notes yet.",
+      "noteSaved": "Note saved.",
+      "addNote": "Add a note",
+      "saveNote": "Save note",
+      "noteCount": "{{n}} of {{max}} characters",
+      "updateStatus": "Update status",
+      "status": "Status",
+      "statusNote": "Note for this change (optional)",
+      "saveStatus": "Save status",
+      "statusSaved": "Status updated.",
+      "whatsapp": "WhatsApp",
+      "whatsappHelp": "Create a click-to-chat link, open it, and send the message yourself in WhatsApp.",
+      "prepareWhatsapp": "Prepare WhatsApp link",
+      "preparing": "Preparing…",
+      "openWhatsapp": "Open WhatsApp chat",
+      "markSent": "Mark as sent on WhatsApp",
+      "linkNoted": "Link opening recorded as a note.",
+      "sentNoted": "Recorded as sent, confirmed by staff.",
+      "whatsappNotDelivery": "Opening the link or marking it sent does not confirm delivery. Staff notes are the only record."
+    },
+    "customers": {
+      "title": "Customers",
+      "explain": "Marketing messages go only to customers who agreed to marketing when they asked for a quote and have not opted out. Staff can opt a customer out. Only the owner can restore consent.",
+      "search": "Search customers",
+      "searchPlaceholder": "Search by name or phone",
+      "eligibilityFilter": "Filter by eligibility",
+      "eligibilityAll": "All customers",
+      "eligibility": {
+        "eligible": "Eligible for campaigns",
+        "no_consent": "No marketing consent",
+        "opted_out": "Opted out"
+      },
+      "count": "{{n}} customers",
+      "empty": "No customers yet. Customers appear here after their first quote request.",
+      "inquiries": "{{n}} quote requests",
+      "lastRequest": "Last request:",
+      "eligibleBadge": "Eligible",
+      "noConsentBadge": "No consent",
+      "optedOutBadge": "Opted out",
+      "consentYes": "Marketing consent: yes",
+      "consentNo": "Marketing consent: no",
+      "optedOutOn": "Opted out on {{when}}",
+      "optOut": "Opt out of marketing",
+      "restore": "Restore marketing consent",
+      "restoreOwnerOnly": "Only the owner can restore marketing consent for this customer.",
+      "noteLabel": "Reason (optional)",
+      "optOutHelp": "The customer will be excluded from all future campaigns. Existing campaign records are kept.",
+      "restoreHelp": "The customer can be included in future campaigns again, if they have consented.",
+      "confirmOptOut": "Confirm opt-out",
+      "confirmRestore": "Confirm restore",
+      "cancel": "Cancel",
+      "optedOutDone": "Customer opted out. They will not receive campaign messages.",
+      "restoredDone": "Marketing consent restored."
+    },
+    "campaigns": {
+      "title": "Campaigns",
+      "explain": "Campaigns are sent by staff, one customer at a time, from WhatsApp links. Nothing is sent automatically.",
+      "new": "New campaign",
+      "statusFilter": "Filter by status",
+      "statusAll": "All campaigns",
+      "status": {
+        "draft": "Draft",
+        "prepared": "Prepared"
+      },
+      "count": "{{n}} campaigns",
+      "empty": "No campaigns yet.",
+      "allCities": "All cities",
+      "languages": {
+        "en": "English",
+        "hi": "Hindi"
+      },
+      "summaryLine": "Recipients: {{eligible}} · No consent: {{noConsent}} · Opted out: {{optedOut}}",
+      "form": {
+        "title": "Campaign",
+        "newTitle": "New campaign",
+        "editTitle": "Edit draft campaign",
+        "back": "Back",
+        "preparedLocked": "This campaign has been prepared, so it can no longer be edited.",
+        "lockNotice": "Saved as a draft. Nothing is sent until you prepare the audience and send messages one by one.",
+        "sections": {
+          "details": "Campaign details"
+        },
+        "fields": {
+          "name": "Campaign name",
+          "language": "Message language",
+          "city": "City (optional)",
+          "message": "Message"
+        },
+        "hints": {
+          "city": "Leave empty to include customers from all cities.",
+          "message": "Use {name} where the customer's name should appear."
+        },
+        "save": "Save draft",
+        "saving": "Saving…",
+        "cancel": "Cancel",
+        "created": "Draft campaign created.",
+        "saved": "Draft saved."
+      },
+      "detail": {
+        "back": "Back to campaigns",
+        "edit": "Edit draft",
+        "summary": "Campaign summary",
+        "placeholderHint": "When a link is made, {name} in the message is replaced with the customer's name.",
+        "prepareTitle": "Prepare audience",
+        "prepareHelp": "Preparing fixes the recipient list to customers with marketing consent who have not opted out. Customers without consent or who have opted out are counted, not listed. This cannot be undone.",
+        "prepare": "Prepare audience",
+        "confirmPrepare": "Yes, fix the recipient list",
+        "cancel": "Cancel",
+        "preparedDone": "Audience prepared with {{n}} recipients.",
+        "countsTitle": "Results",
+        "counts": {
+          "eligible": "Recipients",
+          "excludedNoConsent": "Excluded: no consent",
+          "excludedOptedOut": "Excluded: opted out",
+          "linkOpened": "Links opened",
+          "sentConfirmed": "Sent confirmed"
+        },
+        "excludedNote": "Excluded customers were counted at preparation time and are not listed."
+      },
+      "recipients": {
+        "title": "Recipients",
+        "reminder": "Open the WhatsApp link to write the message, then send it yourself. Mark it as sent only after you have actually sent it. Opening a link does not mean the customer received it.",
+        "empty": "No recipients. Nobody met the consent rules for this audience.",
+        "notEligible": "No longer eligible",
+        "notEligibleHelp": "This customer opted out or withdrew consent after the audience was prepared, so no message can be sent.",
+        "linkOpenedAt": "Link opened {{when}}",
+        "notOpened": "Link not opened yet",
+        "sentAt": "Sent confirmed {{when}}",
+        "notSent": "Not marked as sent",
+        "openLink": "Open WhatsApp",
+        "markSent": "Mark as sent",
+        "confirmSent": "Confirm: I sent it",
+        "sentDone": "Marked as sent.",
+        "popupBlocked": "Your browser blocked the WhatsApp window. Allow pop-ups for this site and try again."
+      }
+    }
+  }
+}
