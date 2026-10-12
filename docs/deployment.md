@@ -4,7 +4,7 @@ Status: configuration is written but **not deployed or verified against a live e
 
 ## API (Render, or any Node host)
 
-- Build: `npm ci && npm run build -w @pcs/shared && npm run build -w @pcs/api`
+- Build: `npm ci --include=dev && npm run build -w @pcs/shared && npm run build -w @pcs/api`
 - Start: `npm run start -w @pcs/api`
 - Environment: `NODE_ENV=production`, `PORT` (the host usually sets it), `CLIENT_URL` (web origin, no trailing slash), `MONGODB_URI` (Atlas connection string), `SESSION_SECRET` (at least 32 random characters), `WHATSAPP_NUMBER` (digits only, optional).
 - `DEV_INQUIRY_LIMIT_PER_HOUR`: development and test only. Raises the quote-form limit (default 8 per IP per hour) for local end-to-end runs. Ignored in production. Do not set it in production.
