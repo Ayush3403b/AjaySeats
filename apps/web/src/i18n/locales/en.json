@@ -3,13 +3,16 @@
     "name": "Premium Seat Covers",
     "tagline": "Crafted for Comfort. Built for Every Drive."
   },
+  "brand": {
+    "subline": "Seat covers · Made to order"
+  },
   "a11y": {
     "skip": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "language": "Language",
-    "theme": "Switch between light and dark mode",
     "progress": "Page scroll progress",
+    "backToTop": "Back to top",
     "gallery": "Product images",
     "previous": "Previous",
     "next": "Next",
@@ -37,6 +40,13 @@
   "hero": {
     "eyebrow": "Leather · Leatherette · PVC · Fabric",
     "title": "Crafted for Comfort. Built for Every Drive.",
+    "titleLead": "Crafted for Comfort.",
+    "titleScript": "Built for Every Drive.",
+    "cardTitle": "Made for your car",
+    "cardBody": "Share your model and year. We confirm fitment before anything is made.",
+    "statMaterials": "Materials",
+    "statColours": "Colours",
+    "statLanguages": "Quote languages",
     "subtitle": "Choose a material and colour, see public prices, and request a quote in minutes, or chat with us on WhatsApp.",
     "explore": "Explore Products",
     "quote": "Get a Quote",
@@ -59,12 +69,22 @@
     "makesTitle": "Listed for these car makes",
     "makesSubtitle": "Fitment depends on the exact model and year. Confirm before you buy.",
     "emptyFeatured": "Featured products will appear here once they are published.",
-    "whatsappTitle": "Prefer to talk? Message us on WhatsApp.",
     "whatsappBody": "Share your car make, model and year. We reply with options and a quotation.",
     "whatsappCta": "Chat on WhatsApp",
-    "quoteCta": "Request a quote"
+    "quoteCta": "Request a quote",
+    "featuredEyebrow": "Featured",
+    "colourEyebrow": "Colour studio",
+    "materialsEyebrow": "Materials",
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "Four steps to a perfect fit",
+    "stepsSubtitle": "No surprises. You see the quotation before anything is made.",
+    "ctaEyebrow": "Let’s talk",
+    "ctaTitleLead": "Ready for seats that feel",
+    "ctaTitleScript": "made just for you.",
+    "stripLabel": "Colours & makes"
   },
   "catalogue": {
+    "eyebrow": "Catalogue",
     "title": "All seat covers",
     "subtitle": "Filter by material, colour and car. Prices shown are public list prices.",
     "search": "Search by name or SKU",
@@ -136,6 +156,7 @@
     "quoteFull": "Your quote list is full (maximum 10). Remove an item first."
   },
   "materials": {
+    "eyebrow": "Materials guide",
     "title": "Materials",
     "subtitle": "Choose the material that suits your car, your budget and the look you want.",
     "jump": "Jump to material",
@@ -182,7 +203,9 @@
     "viewProducts": "See products in {{name}}"
   },
   "about": {
-    "title": "Made to order, checked by hand",
+    "eyebrow": "Our process",
+    "titleLead": "Made to order,",
+    "titleScript": "checked by hand.",
     "subtitle": "A focused maker of seat covers. We quote every request individually, so you know exactly what you are getting.",
     "stepOne": "Share your car",
     "stepOneBody": "Tell us the make, model, year and city.",
@@ -195,6 +218,7 @@
     "cta": "Start a quote request"
   },
   "quote": {
+    "eyebrow": "Quote request",
     "title": "Request a quote",
     "subtitle": "Tell us about your car and what you need. We reply with a quotation. This is a request, not an order.",
     "steps": {
@@ -271,6 +295,7 @@
     }
   },
   "contact": {
+    "eyebrow": "Get in touch",
     "title": "Contact us",
     "subtitle": "The quickest way to reach us is WhatsApp. For a formal quotation, use the quote form.",
     "whatsappTitle": "WhatsApp",
@@ -282,6 +307,7 @@
     "quoteCta": "Request a quote"
   },
   "legal": {
+    "eyebrow": "Legal",
     "privacyTitle": "Privacy notice",
     "termsTitle": "Terms of use",
     "updated": "Last updated: {{date}}",
@@ -356,6 +382,7 @@
     "shop": "Shop",
     "company": "Company",
     "help": "Help",
+    "talk": "Talk to us",
     "rights": "All rights reserved."
   },
   "notFound": {

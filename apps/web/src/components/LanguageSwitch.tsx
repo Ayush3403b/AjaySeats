@@ -20,7 +20,7 @@ export function LanguageSwitch({ className = '' }: { className?: string }) {
   };
 
   return (
-    <div role="group" aria-label={t('a11y.language')} className={`relative inline-flex rounded-xl border border-line bg-card p-1 ${className}`}>
+    <div role="group" aria-label={t('a11y.language')} className={`relative inline-flex rounded-full border border-line bg-surface p-1 shadow-soft ${className}`}>
       {SUPPORTED_LANGUAGES.map((lng) => {
         const active = lng === current;
         return (
@@ -31,12 +31,12 @@ export function LanguageSwitch({ className = '' }: { className?: string }) {
             aria-pressed={active}
             title={FULL[lng]}
             onClick={() => choose(lng)}
-            className="tap-target relative z-10 rounded-lg px-3 text-sm font-semibold text-ink"
+            className="tap-target relative z-10 rounded-full px-3.5 text-sm font-semibold text-ink"
           >
             {active ? (
               <motion.span
                 layoutId="lang-pill"
-                className="absolute inset-0 -z-10 rounded-lg bg-primary"
+                className="absolute inset-0 -z-10 rounded-full bg-primary"
                 transition={{ type: 'spring', stiffness: 500, damping: 35 }}
               />
             ) : null}

@@ -42,7 +42,7 @@ The web app runs without the API too: when `VITE_API_BASE_URL` is empty, it uses
 
 ## Status
 
-Implemented: public catalogue, product detail, materials, about, quote request (four steps, server validation mapping), contact, privacy and terms, 404, EN/HI, dark and light themes, reduced-motion handling, product and inquiry API with admin authentication, and the admin dashboard at `/admin` (login, product list with live price edits, publish, archive and delete, product create and edit, inquiry list and detail with status, notes and WhatsApp link tracking). The admin needs the live API; the demo build shows a notice instead of saving.
+Implemented: public catalogue, product detail, materials, about, quote request (four steps, server validation mapping), contact, privacy and terms, 404, EN/HI, a single light theme, reduced-motion handling, product and inquiry API with admin authentication, and the admin dashboard at `/admin` (login, product list with live price edits, publish, archive and delete, product create and edit, inquiry list and detail with status, notes and WhatsApp link tracking). The admin needs the live API; the demo build shows a notice instead of saving.
 
 Not yet implemented: image uploads, customers, campaigns, WhatsApp message sending (only click-to-chat links), translation admin endpoints, and a contact form endpoint. See `docs/api.md`.
 

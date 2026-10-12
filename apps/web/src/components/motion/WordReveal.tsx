@@ -6,6 +6,7 @@ import { useReducedMotion } from '../../motion/hooks.js';
  * Headline that blur-reveals word by word. Words stay opaque from the first paint so the
  * text can be the Largest Contentful Paint without waiting for the animation.
  * Set `onLoad` for above-the-fold headings; otherwise it reveals when scrolled into view.
+ * `accentWords` colours the last N words; `script` adds a Pinyon Script line underneath.
  */
 export function WordReveal({
   text,
@@ -13,16 +14,25 @@ export function WordReveal({
   className = '',
   onLoad = false,
   delay = 0,
+  accentWords = 0,
+  script,
+  scriptClassName = 'text-primary',
+  id,
 }: {
   text: string;
   as?: 'h1' | 'h2' | 'h3' | 'p';
   className?: string;
   onLoad?: boolean;
   delay?: number;
+  accentWords?: number;
+  script?: string;
+  scriptClassName?: string;
+  id?: string;
 }) {
   const reduced = useReducedMotion();
   const Tag = motion[as];
   const words = text.split(' ');
+  const accentFrom = words.length - accentWords;
   const container = reduced ? { hidden: {}, show: {} } : staggerContainer(0.06, delay);
   const wordVariants = reduced ? reducedFade : blurIn;
   const triggerProps = onLoad
@@ -30,12 +40,17 @@ export function WordReveal({
     : { initial: 'hidden', whileInView: 'show', viewport: { once: true, margin: '-15%' } as const };
 
   return (
-    <Tag className={className} variants={container} aria-label={text} {...triggerProps}>
+    <Tag id={id} className={className} variants={container} aria-label={script ? `${text} ${script}` : text} {...triggerProps}>
       {words.map((word, i) => (
-        <motion.span key={`${word}-${i}`} variants={wordVariants} className="mr-[0.25em] inline-block" aria-hidden>
+        <motion.span key={`${word}-${i}`} variants={wordVariants} className={`mr-[0.25em] inline-block ${i >= accentFrom ? 'text-primary' : ''}`} aria-hidden>
           {word}
         </motion.span>
       ))}
+      {script ? (
+        <motion.span variants={wordVariants} className={`t-script mt-1 block ${scriptClassName}`} aria-hidden>
+          {script}
+        </motion.span>
+      ) : null}
     </Tag>
   );
 }

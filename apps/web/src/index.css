@@ -23,11 +23,16 @@
   h2,
   h3 {
     font-family: var(--font-heading);
-    letter-spacing: -0.01em;
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+  }
   :focus-visible {
-    outline: 3px solid var(--accent);
+    outline: 3px solid var(--focus-ring);
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -39,86 +44,213 @@
 }
 
 @layer components {
-  /* Fluid type scale with clamp(). */
+  /* Fluid type scale with clamp(). Fraunces reads best at medium weights. */
   .t-display {
-    font-size: clamp(2.25rem, 1.2rem + 4.2vw, 4.5rem);
-    line-height: 1.05;
-    font-weight: 800;
+    font-size: clamp(2.4rem, 1.3rem + 4.4vw, 4.75rem);
+    line-height: 1.04;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
   .t-h2 {
-    font-size: clamp(1.75rem, 1.1rem + 2.4vw, 2.75rem);
-    line-height: 1.12;
-    font-weight: 800;
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
   .t-h3 {
-    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+    font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
     line-height: 1.25;
+    font-weight: 600;
+  }
+
+  /* Pinyon Script accent line. Sized in em so it scales with the heading it sits in. */
+  .t-script {
+    font-family: var(--font-script);
+    font-weight: 400;
+    font-size: 1.12em;
+    line-height: 1.1;
+    letter-spacing: 0;
+    padding-inline-end: 0.12em; /* room for the final swash */
+  }
+  /* Sancreek wordmark and numerals. */
+  .wordmark {
+    font-family: var(--font-brand);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .numeral {
+    font-family: var(--font-brand);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  /* The accent faces have no Devanagari glyphs: use the serif heading face for Hindi instead. */
+  :lang(hi) .t-script {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.88em;
+  }
+  :lang(hi) .wordmark {
+    font-family: var(--font-heading);
     font-weight: 700;
+    letter-spacing: 0;
   }
 
-  /* Gradient text: decorative, used on headings only. */
-  .gradient-text {
-    background-image: linear-gradient(100deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Eyebrow pill above section titles: dot + tracked caps. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+    background: var(--primary-soft);
+    padding: 0.35rem 0.95rem;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+  .eyebrow::before {
+    content: '';
+    height: 0.4rem;
+    width: 0.4rem;
+    border-radius: 9999px;
+    background: var(--secondary);
+    flex-shrink: 0;
+  }
+  .eyebrow-gold {
+    border-color: color-mix(in srgb, var(--secondary) 55%, transparent);
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+    color: var(--gold-dark);
+  }
+  .eyebrow-dark {
+    border-color: color-mix(in srgb, var(--secondary) 45%, transparent);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--secondary);
+  }
+  :lang(hi) .eyebrow {
+    letter-spacing: 0;
+    font-size: 0.78rem;
+  }
+  /* Letter-spacing pulls Devanagari conjuncts and vowel signs apart, so tracked labels are not tracked in Hindi. */
+  :lang(hi) [class*='tracking-'] {
+    letter-spacing: 0 !important;
   }
 
-  /* Soft glass panel for dark sections. */
+  /* Short gradient rule under a heading. */
+  .accent-bar {
+    display: block;
+    height: 4px;
+    width: 4.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--primary), var(--teal));
+  }
+  .accent-bar-gold {
+    background: linear-gradient(90deg, var(--secondary), #ffd470);
+  }
+
+  /* Decorative backgrounds. */
+  .bg-grid {
+    background-image: linear-gradient(rgba(17, 24, 39, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 78%);
+  }
+  .bg-dots {
+    background-image: radial-gradient(rgba(48, 38, 179, 0.13) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+  }
+
+  /* White card with a soft indigo-tinted shadow; lifts on hover for fine pointers. */
+  .card-soft {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+      border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
+    }
+  }
+
+  /* Tinted square behind an icon: set --tile inline. */
+  .icon-tile {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--tile, var(--primary)) 13%, white);
+    color: var(--tile, var(--primary));
+  }
+
+  /* Frosted white panel used for forms and side panels. */
   .glass {
     background: var(--glass);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
   }
 
-  /* Animated mesh gradient behind the hero: transform-only drift. */
-  .mesh {
+  /* Soft colour blobs drifting behind the hero: transform-only. */
+  .aurora {
     position: absolute;
-    inset: -20%;
+    inset: -10%;
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
   }
-  .mesh > span {
+  .aurora > span {
     position: absolute;
-    width: 46vmax;
-    height: 46vmax;
+    width: 38vmax;
+    height: 38vmax;
     border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.55;
+    filter: blur(80px);
+    opacity: 0.22;
     will-change: transform;
-    animation: mesh-drift 22s ease-in-out infinite alternate;
+    animation: aurora-drift 24s ease-in-out infinite alternate;
   }
-  .mesh > span:nth-child(1) {
+  .aurora > span:nth-child(1) {
     background: var(--primary);
-    top: 0;
-    left: 0;
+    top: -12%;
+    right: 4%;
   }
-  .mesh > span:nth-child(2) {
+  .aurora > span:nth-child(2) {
     background: var(--secondary);
-    top: 20%;
-    right: -10%;
-    animation-duration: 28s;
-    animation-delay: -6s;
+    bottom: -18%;
+    left: -6%;
+    opacity: 0.2;
+    animation-duration: 30s;
+    animation-delay: -8s;
   }
-  .mesh > span:nth-child(3) {
-    background: var(--accent);
-    bottom: -10%;
-    left: 30%;
-    animation-duration: 25s;
-    animation-delay: -12s;
+  .aurora > span:nth-child(3) {
+    background: var(--teal);
+    top: 30%;
+    left: 40%;
+    opacity: 0.12;
+    animation-duration: 27s;
+    animation-delay: -14s;
   }
-  @keyframes mesh-drift {
+  @keyframes aurora-drift {
     0% {
       transform: translate3d(0, 0, 0) scale(1);
     }
     100% {
-      transform: translate3d(6vw, -4vh, 0) scale(1.12);
+      transform: translate3d(5vw, -3vh, 0) scale(1.1);
     }
   }
 
-  /* Sheen sweep across a gradient heading or button: transform only. */
+  /* Sheen sweep across a button: transform only. */
   .sheen {
     position: relative;
     display: inline-block;
@@ -128,7 +260,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
     transform: translateX(-120%);
     pointer-events: none;
   }
@@ -140,39 +272,6 @@
     to {
       transform: translateX(120%);
     }
-  }
-
-  /* Conic-gradient animated border, shown on hover (fine pointers only). */
-  .conic-frame {
-    position: relative;
-    isolation: isolate;
-  }
-  .conic-frame::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--highlight), var(--primary));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    animation: spin-border 4s linear infinite;
-    animation-play-state: paused;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .conic-frame:hover::before,
-    .conic-frame:focus-within::before {
-      opacity: 1;
-      animation-play-state: running;
-    }
-  }
-
-  /* Material-tinted glow: set --glow inline per material. */
-  .glow-card {
-    transition: box-shadow 0.4s ease;
-  }
-  .glow-card:hover {
-    box-shadow: 0 0 0 1px var(--glow), 0 24px 60px -24px var(--glow);
   }
 
   /* Quick actions slide up on fine-pointer hover; always visible on touch. */
@@ -201,9 +300,8 @@
     left: 50%;
     transform: translate(-50%, 4px);
     white-space: nowrap;
-    background: var(--bg-elevated);
-    color: var(--text);
-    border: 1px solid var(--border);
+    background: var(--text);
+    color: #ffffff;
     padding: 4px 8px;
     border-radius: 8px;
     font-size: 0.75rem;
@@ -231,10 +329,6 @@
       transform: translateX(-50%);
     }
   }
-
-  .btn-gradient-hover {
-    background-image: linear-gradient(120deg, var(--primary), #ff8a5c);
-  }
 }
 
 @layer utilities {
@@ -253,30 +347,23 @@
   }
 }
 
-@keyframes spin-border {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Reduced motion: keep fades, remove continuous, parallax-like and looping effects. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .mesh > span,
+  .aurora > span,
   .marquee-track,
-  .conic-frame::before,
   .sheen::after,
   .sheen:hover::after,
   .sheen-active::after,
   .float-slow {
     animation: none !important;
   }
-  .conic-frame::before {
-    display: none;
-  }
   .quick-actions {
+    transform: none !important;
+  }
+  .card-hover:hover {
     transform: none !important;
   }
 }
@@ -292,7 +379,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.7) 50%, transparent 80%);
     transform: translateX(-100%);
     animation: shimmer-sweep 1.4s ease-in-out infinite;
   }

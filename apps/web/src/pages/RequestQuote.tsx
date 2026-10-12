@@ -283,7 +283,7 @@ export default function RequestQuote() {
             initial={reduced ? false : { opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="glass rounded-3xl p-8 text-center md:p-12"
+            className="card-soft !rounded-[2rem] p-8 text-center md:p-12"
             role="status"
           >
             <motion.span
@@ -295,9 +295,9 @@ export default function RequestQuote() {
             >
               <Check size={32} />
             </motion.span>
-            <h1 className="t-h2 mt-6">{t('quote.success.title')}</h1>
+            <h1 className="t-h2 mt-6 text-ink">{t('quote.success.title')}</h1>
             <p className="mt-2 text-muted">{t('quote.success.body')}</p>
-            <div className="mt-8 rounded-2xl border border-line bg-card p-6">
+            <div className="mt-8 rounded-2xl border border-dashed border-primary/30 bg-primary-soft/60 p-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-muted">{t('quote.success.reference')}</p>
               <p className="mt-2">
                 <CountUpReference reference={receipt.reference} />
@@ -337,17 +337,19 @@ export default function RequestQuote() {
       <Seo title={t('seo.quoteTitle')} description={t('seo.quoteDescription')} path="/request-quote" />
       <div className="mx-auto max-w-3xl px-4 py-10 md:px-6 md:py-14">
         <header>
-          <h1 className="t-h2 gradient-text">{t('quote.title')}</h1>
-          <p className="mt-2 text-muted">{t('quote.subtitle')}</p>
+          <p className="eyebrow">{t('quote.eyebrow')}</p>
+          <h1 className="t-h2 mt-5 text-ink">{t('quote.title')}</h1>
+          <span aria-hidden className="accent-bar mt-5" />
+          <p className="mt-5 text-lg leading-relaxed text-muted">{t('quote.subtitle')}</p>
         </header>
 
         <nav aria-label={t('quote.progress', { current: step + 1, total: STEPS.length })} className="mt-8">
           <p className="mb-3 text-sm font-semibold" aria-live="polite">
             {t('quote.progress', { current: step + 1, total: STEPS.length })}
           </p>
-          <div className="h-2 overflow-hidden rounded-full bg-line" aria-hidden>
+          <div className="h-2 overflow-hidden rounded-full bg-bg-elevated" aria-hidden>
             <motion.div
-              className="h-full origin-left rounded-full bg-gradient-to-r from-primary to-accent"
+              className="h-full origin-left rounded-full bg-gradient-to-r from-primary via-teal to-gold"
               animate={{ scaleX: (step + 1) / STEPS.length }}
               transition={{ type: 'spring', stiffness: 260, damping: 32 }}
               style={{ width: '100%' }}
@@ -357,8 +359,8 @@ export default function RequestQuote() {
             {STEPS.map((s, i) => (
               <li key={s} aria-current={i === step ? 'step' : undefined} className={i <= step ? 'text-ink' : 'text-muted'}>
                 <span
-                  className={`mx-auto mb-1 flex h-7 w-7 items-center justify-center rounded-full border text-xs ${
-                    i < step ? 'border-accent bg-accent text-on-primary' : i === step ? 'border-accent text-accent' : 'border-line text-muted'
+                  className={`mx-auto mb-1.5 flex h-9 w-9 items-center justify-center rounded-full border text-sm font-bold shadow-soft ${
+                    i < step ? 'border-primary bg-primary text-on-primary' : i === step ? 'border-primary bg-primary-soft text-primary' : 'border-line bg-surface text-muted'
                   }`}
                   aria-hidden
                 >
@@ -378,7 +380,7 @@ export default function RequestQuote() {
 
         <form
           noValidate
-          className="glass mt-8 rounded-3xl p-5 md:p-8"
+          className="card-soft mt-8 !rounded-[2rem] p-5 md:p-8"
           onSubmit={handleSubmit(onValid, () => {
             // Validation failed on the review step: jump to the first step that has an error.
             const firstBad = Object.keys(errors)

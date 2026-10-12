@@ -9,8 +9,8 @@ export type Tone = 'neutral' | 'good' | 'warn' | 'bad' | 'info';
 
 const TONES: Record<Tone, string> = {
   neutral: 'border-line bg-card text-muted',
-  good: 'border-emerald-500/50 bg-emerald-500/10 text-emerald-300',
-  warn: 'border-amber-500/50 bg-amber-500/10 text-amber-200',
+  good: 'border-emerald-600/40 bg-emerald-500/10 text-emerald-800',
+  warn: 'border-amber-500/50 bg-amber-400/15 text-amber-900',
   bad: 'border-sale bg-sale/10 text-sale',
   info: 'border-accent/50 bg-accent/10 text-accent',
 };
@@ -29,7 +29,7 @@ export function AdminHeading({ title, actions, back }: { title: string; actions?
             <ArrowLeft size={16} aria-hidden /> {back.label}
           </Link>
         ) : null}
-        <h1 className="t-h2 break-words">{title}</h1>
+        <h1 className="t-h2 break-words text-ink">{title}</h1>
       </div>
       {actions ? <div className="flex flex-wrap gap-2">{actions}</div> : null}
     </div>

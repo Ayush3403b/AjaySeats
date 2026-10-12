@@ -12,8 +12,8 @@ export function MaterialBadge({ material, className = '' }: { material: Material
     <span
       className={`inline-flex min-h-[28px] items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-ink ${className}`}
       style={{
-        background: `color-mix(in srgb, var(${meta.token}) 20%, transparent)`,
-        border: `1px solid color-mix(in srgb, var(${meta.token}) 55%, transparent)`,
+        background: `color-mix(in srgb, var(${meta.token}) 12%, white)`,
+        border: `1px solid color-mix(in srgb, var(${meta.token}) 40%, white)`,
       }}
     >
       <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: `var(${meta.token})` }} />

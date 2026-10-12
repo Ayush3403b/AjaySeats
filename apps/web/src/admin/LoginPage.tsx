@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { Seo } from '../components/Seo.js';
 import { Field, inputClass } from '../components/Field.js';
 import { Button } from '../components/motion/Button.js';
-import { ThemeToggle } from '../components/ThemeToggle.js';
 import { LanguageSwitch } from '../components/LanguageSwitch.js';
+import { Logo } from '../components/Navbar.js';
 import { useAdminSession } from './session.js';
 import { adminErrorKey } from './messages.js';
 
@@ -56,13 +56,18 @@ export default function LoginPage() {
   return (
     <>
       <Seo title={t('admin.login.title')} description={t('admin.login.title')} path="/admin/login" noindex />
-      <div className="relative flex min-h-screen items-center justify-center px-4 py-10">
+      <div className="relative isolate flex min-h-screen items-center justify-center px-4 py-10">
+        <div aria-hidden className="bg-grid absolute inset-0 -z-10" />
+        <div className="absolute left-4 top-4 md:left-6">
+          <Logo compact />
+        </div>
         <div className="absolute right-4 top-4 flex items-center gap-2">
           <LanguageSwitch />
-          <ThemeToggle />
         </div>
-        <div className="glass w-full max-w-md rounded-3xl p-6 md:p-8">
-          <h1 className="t-h2 gradient-text">{t('admin.login.title')}</h1>
+        <div className="glass w-full max-w-md rounded-[2rem] p-6 md:p-8">
+          <p className="eyebrow">{t('admin.title')}</p>
+          <h1 className="t-h2 mt-4 text-ink">{t('admin.login.title')}</h1>
+          <span aria-hidden className="accent-bar mt-4" />
           <p className="mt-2 text-sm text-muted">{t('admin.login.subtitle')}</p>
           {formError ? (
             <p role="alert" className="mt-5 rounded-xl border border-sale bg-card p-3 text-sm font-semibold text-sale">

@@ -1,14 +1,16 @@
 import { useEffect, type CSSProperties } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Droplets, Gem, Layers, Sparkles, Wind, type LucideIcon } from 'lucide-react';
 import { MATERIALS, MATERIAL_META, type Material } from '@pcs/shared';
 import { Seo } from '../components/Seo.js';
+import { PageHeader } from '../components/Section.js';
 import { LinkButton } from '../components/motion/Button.js';
 import { RevealItem, RevealSection } from '../components/motion/Reveal.js';
-import { WordReveal } from '../components/motion/WordReveal.js';
 import { useReducedMotion } from '../motion/hooks.js';
 import { motion } from 'framer-motion';
+
+const ICON: Record<Material, LucideIcon> = { leather: Gem, leatherette: Layers, pvc: Droplets, fabric: Wind, other: Sparkles };
 
 /** CSS texture per material. Each is a layered gradient so no images are needed. */
 const TEXTURE: Record<Material, string> = {
@@ -31,10 +33,10 @@ function TexturePanel({ material, label }: { material: Material; label: string }
       whileInView={{ scale: 1 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-line"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border-[6px] border-white"
       style={{
-        background: `${TEXTURE[material]}, linear-gradient(135deg, var(${MATERIAL_META[material].token}), #0b1020)`,
-        boxShadow: `inset 0 0 60px rgba(0,0,0,.35), 0 20px 60px -20px var(${MATERIAL_META[material].token})`,
+        background: `${TEXTURE[material]}, linear-gradient(135deg, color-mix(in srgb, var(${MATERIAL_META[material].token}) 88%, white), color-mix(in srgb, var(${MATERIAL_META[material].token}) 62%, #1b1660))`,
+        boxShadow: `inset 0 0 50px rgba(0,0,0,.18), 0 0 0 1px var(--border), 0 28px 60px -24px color-mix(in srgb, var(${MATERIAL_META[material].token}) 70%, transparent)`,
       }}
     />
   );
@@ -54,18 +56,13 @@ export default function Materials() {
   return (
     <>
       <Seo title={t('seo.materialsTitle')} description={t('seo.materialsDescription')} path="/materials" />
-      <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-14">
-        <header className="max-w-3xl">
-          <WordReveal as="h1" text={t('materials.title')} className="t-display gradient-text" onLoad />
-          <p className="mt-4 text-lg text-muted">{t('materials.subtitle')}</p>
-        </header>
-
+      <PageHeader eyebrow={t('materials.eyebrow')} title={t('materials.title')} subtitle={t('materials.subtitle')}>
         <nav aria-label={t('materials.jump')} className="mt-8 flex flex-wrap gap-2">
           {MATERIALS.map((key) => (
             <a
               key={key}
               href={`#${key}`}
-              className="tap-target inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 text-sm font-semibold text-ink no-underline"
+              className="tap-target inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-semibold text-ink no-underline shadow-soft transition-colors hover:border-primary/40 hover:text-primary"
               style={{ '--mc': `var(${MATERIAL_META[key].token})` } as CSSProperties}
             >
               <span className="h-3 w-3 rounded-full" style={{ background: 'var(--mc)' }} aria-hidden />
@@ -73,26 +70,35 @@ export default function Materials() {
             </a>
           ))}
         </nav>
-      </div>
+      </PageHeader>
 
       {MATERIALS.map((key, index) => {
         const name = t(`materials.${key}.name`);
         const reversed = index % 2 === 1;
+        const Icon = ICON[key];
         return (
           <RevealSection
             key={key}
             as="section"
             id={key}
             aria-labelledby={`${key}-title`}
-            className="scroll-mt-28 border-t border-line py-14 md:py-20"
+            className={`scroll-mt-28 border-b border-line py-16 md:py-24 ${reversed ? 'bg-surface' : ''}`}
           >
             <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 md:grid-cols-2 md:px-6">
               <RevealItem className={reversed ? 'md:order-2' : ''}>
                 <TexturePanel material={key} label={`${t('materials.closeUp')}: ${name}`} />
               </RevealItem>
               <RevealItem className="space-y-5">
-                <span className="block h-2 w-16 rounded-full" style={{ background: `var(${MATERIAL_META[key].token})` }} aria-hidden />
-                <h2 id={`${key}-title`} className="t-h2">{name}</h2>
+                <div className="flex items-center gap-4" style={{ '--tile': `var(${MATERIAL_META[key].token})` } as CSSProperties}>
+                  <span className="icon-tile" aria-hidden>
+                    <Icon size={22} />
+                  </span>
+                  <span className="numeral text-4xl" style={{ color: `var(${MATERIAL_META[key].token})` }} aria-hidden>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h2 id={`${key}-title`} className="t-h2 text-ink">{name}</h2>
+                <span className="block h-1 w-16 rounded-full" style={{ background: `var(${MATERIAL_META[key].token})` }} aria-hidden />
                 <p className="text-lg leading-relaxed text-muted">{t(`materials.${key}.body`)}</p>
                 <LinkButton to={`/products?material=${key}`} icon={<ArrowRight size={18} aria-hidden />}>
                   {t('materials.viewProducts', { name })}
@@ -103,18 +109,19 @@ export default function Materials() {
         );
       })}
 
-      <RevealSection as="section" aria-labelledby="compare-title" className="border-t border-line py-14 md:py-20">
+      <RevealSection as="section" aria-labelledby="compare-title" className="bg-mist py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <RevealItem>
-            <h2 id="compare-title" className="t-h2 mb-8">{t('materials.compareTitle')}</h2>
+          <RevealItem className="mb-10">
+            <h2 id="compare-title" className="t-h2 text-ink">{t('materials.compareTitle')}</h2>
+            <span aria-hidden className="accent-bar mt-5" />
           </RevealItem>
           <div className="grid gap-4 md:grid-cols-5">
             {MATERIALS.map((key) => (
               <RevealItem key={key} className="h-full">
-                <article className="glass h-full rounded-2xl p-5">
+                <article className="card-soft card-hover h-full p-5">
                   <div className="mb-4 flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full" style={{ background: `var(${MATERIAL_META[key].token})` }} aria-hidden />
-                    <h3 className="font-bold text-ink">{t(`materials.${key}.name`)}</h3>
+                    <h3 className="font-heading text-lg font-semibold text-ink">{t(`materials.${key}.name`)}</h3>
                   </div>
                   <dl className="space-y-3 text-sm">
                     <div>

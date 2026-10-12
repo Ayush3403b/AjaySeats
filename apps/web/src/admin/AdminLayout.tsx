@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Seo } from '../components/Seo.js';
-import { ThemeToggle } from '../components/ThemeToggle.js';
 import { LanguageSwitch } from '../components/LanguageSwitch.js';
+import { Logo } from '../components/Navbar.js';
 import { Button } from '../components/motion/Button.js';
 import { useAdminSession } from './session.js';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `tap-target inline-flex items-center rounded-xl px-3 text-sm font-semibold no-underline ${
-    isActive ? 'bg-primary text-on-primary' : 'text-ink hover:bg-card'
+  `tap-target inline-flex items-center rounded-full px-4 text-sm font-semibold no-underline transition-colors ${
+    isActive ? 'bg-primary text-on-primary' : 'text-ink hover:bg-primary-soft hover:text-primary'
   }`;
 
 export function AdminLayout() {
@@ -28,9 +28,10 @@ export function AdminLayout() {
     <>
       <Seo title={t('admin.title')} description={t('admin.title')} path="/admin/products" noindex />
       <div className="min-h-screen">
-        <header className="sticky top-0 z-30 border-b border-line bg-surface/90 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-line bg-surface/90 shadow-soft backdrop-blur-md">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 md:px-6">
-            <Link to="/admin/products" className="font-bold text-ink no-underline">
+            <Logo compact />
+            <Link to="/admin/products" className="eyebrow no-underline">
               {t('admin.title')}
             </Link>
             <nav aria-label={t('admin.nav.label')} className="flex flex-wrap gap-2">
@@ -49,7 +50,6 @@ export function AdminLayout() {
             </nav>
             <div className="ml-auto flex flex-wrap items-center gap-2">
               <LanguageSwitch />
-              <ThemeToggle />
               {session.user ? (
                 <span className="hidden text-sm text-muted lg:inline">
                   {session.user.name} · {t(`admin.role.${session.user.role}`)}

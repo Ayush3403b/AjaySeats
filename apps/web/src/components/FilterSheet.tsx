@@ -38,7 +38,7 @@ export function FilterSheet({ open, onClose, title, children }: { open: boolean;
       {open ? (
         <div className="fixed inset-0 z-[60] md:hidden" role="presentation">
           <motion.div
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-ink/40 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -49,7 +49,7 @@ export function FilterSheet({ open, onClose, title, children }: { open: boolean;
             role="dialog"
             aria-modal="true"
             aria-label={title}
-            className="absolute inset-x-0 bottom-0 flex h-[90vh] flex-col rounded-t-3xl border-t border-line bg-surface shadow-2xl"
+            className="absolute inset-x-0 bottom-0 flex h-[90vh] flex-col rounded-t-[2rem] border-t border-line bg-page shadow-2xl"
             style={{ y }}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}

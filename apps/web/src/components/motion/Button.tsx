@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'framer-motion';
 import { useMagnetic, useReducedMotion } from '../../motion/hooks.js';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'whatsapp';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'whatsapp' | 'gold' | 'outline-light';
 
 const BASE =
-  'relative inline-flex min-h-[44px] select-none items-center justify-center gap-2 overflow-hidden rounded-xl px-5 py-3 text-base font-semibold no-underline transition-colors duration-200 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50';
+  'relative inline-flex min-h-[44px] select-none items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-base font-semibold no-underline transition-[background-color,border-color,box-shadow,filter] duration-200 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50';
 
 const VARIANTS: Record<ButtonVariant, string> = {
-  primary: 'sheen bg-primary text-on-primary shadow-[0_12px_30px_-12px_var(--primary)] hover:brightness-110',
-  secondary: 'border border-line bg-card text-ink hover:bg-surface',
-  ghost: 'text-ink hover:bg-card',
-  whatsapp: 'sheen bg-whatsapp text-[#04130A] shadow-[0_12px_30px_-14px_var(--whatsapp)] hover:brightness-105',
+  primary: 'sheen bg-primary text-on-primary shadow-[0_14px_30px_-12px_rgba(48,38,179,0.55)] hover:bg-primary-dark',
+  secondary: 'border border-line bg-card text-ink shadow-soft hover:border-primary/40 hover:text-primary',
+  ghost: 'text-ink hover:bg-primary-soft',
+  whatsapp: 'sheen bg-whatsapp text-[#04130A] shadow-[0_14px_30px_-14px_rgba(37,211,102,0.7)] hover:brightness-105',
+  gold: 'sheen bg-gold text-on-gold shadow-[0_14px_34px_-12px_rgba(255,176,0,0.7)] hover:brightness-105',
+  'outline-light': 'border border-white/30 bg-white/5 text-white hover:border-white/60 hover:bg-white/10',
 };
 
 interface Ripple {
@@ -104,13 +106,15 @@ export function LinkButton({
 }: CommonProps & { to: string; external?: boolean }) {
   const magnet = useMagnetic(6);
   const classes = `${BASE} ${VARIANTS[variant]} ${className}`;
+  // The motion wrapper must stretch too, or a full-width link collapses to its content.
+  const fullWidth = /(^|\s)w-full(\s|$)/.test(className);
   return (
     <motion.span
       style={{ x: magnet.x, y: magnet.y }}
       whileTap={{ scale: 0.96 }}
       onPointerMove={magnet.handlers.onPointerMove}
       onPointerLeave={magnet.handlers.onPointerLeave}
-      className="inline-flex"
+      className={fullWidth ? 'flex w-full' : 'inline-flex'}
     >
       {external ? (
         <a href={to} target="_blank" rel="noopener noreferrer" className={classes}>

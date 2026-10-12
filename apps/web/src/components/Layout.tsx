@@ -1,8 +1,8 @@
-import { Suspense, useEffect } from 'react';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import { Suspense, useEffect, useState } from 'react';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from 'framer-motion';
 import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, FileText } from 'lucide-react';
+import { ArrowUp, MessageCircle, FileText } from 'lucide-react';
 import { api } from '../api/index.js';
 import { isUiLanguage, applyLanguage, type UiLanguage } from '../i18n/index.js';
 import { pageVariants } from '../motion/variants.js';
@@ -14,7 +14,7 @@ import { Footer } from './Footer.js';
 import { SkeletonBlock } from './States.js';
 import { LinkButton } from './motion/Button.js';
 
-/** Mobile-only top progress bar. Transform-only (scaleX). */
+/** Thin top progress line. Transform-only (scaleX). */
 function ScrollProgress() {
   const { t } = useTranslation();
   const { scrollYProgress } = useScroll();
@@ -25,9 +25,39 @@ function ScrollProgress() {
       aria-label={t('a11y.progress')}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="fixed inset-x-0 top-0 z-[70] h-1 origin-left bg-gradient-to-r from-primary via-secondary to-accent md:hidden"
+      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-gradient-to-r from-teal via-primary to-gold"
       style={{ scaleX }}
     />
+  );
+}
+
+/** Desktop back-to-top button with a ring that fills as the page scrolls. */
+function BackToTop() {
+  const { t } = useTranslation();
+  const { scrollY, scrollYProgress } = useScroll();
+  const ring = useSpring(scrollYProgress, { stiffness: 220, damping: 30 });
+  const [visible, setVisible] = useState(false);
+  useMotionValueEvent(scrollY, 'change', (y) => setVisible(y > 600));
+  return (
+    <AnimatePresence>
+      {visible ? (
+        <motion.button
+          type="button"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ y: -2 }}
+          onClick={() => window.scrollTo({ top: 0 })}
+          aria-label={t('a11y.backToTop')}
+          className="fixed bottom-6 right-6 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-line bg-surface text-ink shadow-lift md:inline-flex"
+        >
+          <svg viewBox="0 0 48 48" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden>
+            <motion.circle cx="24" cy="24" r="22" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" style={{ pathLength: ring }} />
+          </svg>
+          <ArrowUp size={18} aria-hidden />
+        </motion.button>
+      ) : null}
+    </AnimatePresence>
   );
 }
 
@@ -48,7 +78,7 @@ function MobileCtaBar() {
     >
       <div className="flex gap-2">
         <div className="flex-1">
-          <LinkButton to="/request-quote" icon={<FileText size={18} aria-hidden />} className="w-full">
+          <LinkButton to="/request-quote" icon={<FileText size={18} aria-hidden />} className="w-full whitespace-nowrap !px-4">
             {t('nav.quote')}
           </LinkButton>
         </div>
@@ -57,7 +87,7 @@ function MobileCtaBar() {
             href={whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl bg-whatsapp px-4 font-semibold text-[#04130A] no-underline"
+            className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-whatsapp px-4 font-semibold text-[#04130A] no-underline"
           >
             <MessageCircle size={18} aria-hidden />
             {t('nav.whatsapp')}
@@ -102,12 +132,13 @@ export function Layout() {
         {t('a11y.skip')}
       </a>
       {api.mode === 'demo' ? (
-        <div role="note" className="border-b border-line bg-premium/20 px-4 py-2 text-center text-sm text-ink">
+        <div role="note" className="border-b border-gold/40 bg-gold/15 px-4 py-2 text-center text-sm font-medium text-ink">
           {t('demo.banner')}
         </div>
       ) : null}
       <Navbar />
       <ScrollProgress />
+      <BackToTop />
       <main id="main" className={`flex-1 ${productPage ? 'pb-28' : 'pb-24'} md:pb-0`} tabIndex={-1}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="animate" exit="exit">

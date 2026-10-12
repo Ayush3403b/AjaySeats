@@ -1,63 +1,57 @@
 /*
  * DESIGN TOKENS. The single place to change the palette, surfaces and fonts.
  * tailwind.config.ts maps every token below; components never hard-code brand colours.
- * Contrast: body text uses --text / --text-muted on solid --bg / --surface only (WCAG AA).
- * Gradients are decorative and never sit behind body copy.
+ * The site has one light theme: warm cream pages, white cards, indigo for action, gold for emphasis.
+ * Contrast: body text uses --text / --text-muted on --bg / --surface only (WCAG AA).
  */
-
-/* Brand + material tokens are shared by both modes. */
 :root {
-  --primary: #ff6b35; /* sunset orange: primary CTAs. Pair with --on-primary text. */
-  --secondary: #7c3aed; /* royal violet */
-  --accent: #06b6d4; /* aqua: focus rings and PVC */
-  --highlight: #a3e635; /* lime: fabric */
-  --premium: #f59e0b; /* gold: leather */
-  --sale: #f43f5e; /* rose: sale badges */
+  color-scheme: light;
+
+  /* Brand */
+  --primary: #3026b3; /* indigo: primary buttons, links, active states. White text on top. */
+  --primary-dark: #211b72;
+  --primary-soft: #ecebfb; /* indigo tint for icon tiles and active pills */
+  --on-primary: #ffffff;
+  --secondary: #ffb000; /* saffron gold: emphasis, CTA band buttons. Dark text on top. */
+  --gold-dark: #8a5a00; /* gold that passes AA as text on cream */
+  --on-gold: #1a1205;
+  --accent: #4b40d4; /* lighter indigo: focus rings, selection rings, inline links */
+  --teal: #0092b0;
+  --highlight: #15966b; /* green: success */
+  --premium: #ffb000;
+  --sale: #e11d48; /* rose: sale badges and errors. White text on top. */
   --whatsapp: #25d366;
 
-  --material-leather: #f59e0b;
-  --material-leatherette: #7c3aed;
-  --material-pvc: #06b6d4;
-  --material-fabric: #a3e635;
-  --material-other: #ff6b35;
+  /* Material colour codes: decorative, always paired with a text label. */
+  --material-leather: #b7791f;
+  --material-leatherette: #4b40d4;
+  --material-pvc: #0092b0;
+  --material-fabric: #15966b;
+  --material-other: #e8590c;
 
-  --font-heading: 'Manrope', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Surfaces */
+  --bg: #faf9f6; /* warm cream page */
+  --mist: #f5f5fb; /* cool alternate section */
+  --surface: #ffffff;
+  --card: #ffffff;
+  --bg-elevated: #f1f0ec; /* placeholders, swatch wells */
+  --navy: #1b1660; /* deep indigo band */
+  --text: #111827;
+  --text-muted: #596579;
+  --border: #e7e5df;
+  --glass: rgba(255, 255, 255, 0.86);
+
+  /* Elevation */
+  --shadow-soft: 0 1px 3px rgba(17, 24, 39, 0.04), 0 8px 30px -6px rgba(48, 38, 179, 0.07);
+  --shadow-lift: 0 2px 6px rgba(17, 24, 39, 0.04), 0 22px 44px -14px rgba(48, 38, 179, 0.24);
+
+  /* Type. Fraunces for headings, Inter for text, Pinyon Script and Sancreek as accents.
+     The accent faces have no Devanagari, so Hindi falls back to Noto Serif Devanagari (see index.css). */
+  --font-heading: 'Fraunces', 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --on-primary: #0b1020;
+  --font-script: 'Pinyon Script', 'Noto Serif Devanagari', cursive;
+  --font-brand: 'Sancreek', 'Noto Serif Devanagari', Georgia, serif;
+
   --focus-ring: var(--accent);
-}
-
-/* Dark mode is the default. */
-:root,
-[data-theme='dark'] {
-  color-scheme: dark;
-  --bg-deep: #0b1020; /* midnight */
-  --bg-surface: #141a33;
-  --bg-elevated: #1c2447;
-  --bg: var(--bg-deep);
-  --surface: var(--bg-surface);
-  --card: var(--bg-elevated);
-  --text: #f5f7ff;
-  --text-muted: #b4bed3;
-  --border: rgba(255, 255, 255, 0.12);
-  --glass: rgba(20, 26, 51, 0.6);
-}
-
-[data-theme='light'] {
-  color-scheme: light;
-  --bg-light: #f7f8fc;
-  --bg-card-light: #ffffff;
-  --bg: var(--bg-light);
-  --surface: var(--bg-card-light);
-  --card: var(--bg-card-light);
-  --text: #0f172a;
-  --text-muted: #475569;
-  --border: rgba(15, 23, 42, 0.12);
-  --glass: rgba(255, 255, 255, 0.7);
-}
-
-/* Dark-mode surfaces also need the light tokens defined so Tailwind classes resolve everywhere. */
-:root {
-  --bg-light: #f7f8fc;
-  --bg-card-light: #ffffff;
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }

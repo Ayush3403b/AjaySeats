@@ -3,13 +3,18 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { applyLanguage, readStoredLanguage, resolveInitialLanguage } from './i18n/index.js';
-import { applyTheme, readTheme } from './lib/theme.js';
 import { QuoteBasketProvider } from './lib/quoteBasket.js';
 import App from './App.js';
 
-// Theme and language are applied before the first render so the page never flashes the wrong mode.
-applyTheme(readTheme());
+// Language is applied before the first render so the page never flashes the wrong language.
 applyLanguage(resolveInitialLanguage(window.location.search, readStoredLanguage()));
+
+// The site used to offer a dark mode; drop the old saved choice so it does not linger in storage.
+try {
+  window.localStorage.removeItem('pcs-theme');
+} catch {
+  /* storage blocked */
+}
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Missing #root element in index.html');

@@ -49,4 +49,4 @@ export function Field({
 }
 
 export const inputClass =
-  'min-h-[44px] w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-base text-ink placeholder:text-muted focus-visible:outline-accent aria-[invalid=true]:border-sale';
+  'min-h-[44px] w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-base text-ink shadow-[inset_0_1px_2px_rgba(17,24,39,0.04)] transition-colors placeholder:text-muted/80 hover:border-primary/30 focus:border-primary/60 focus-visible:outline-accent aria-[invalid=true]:border-sale';

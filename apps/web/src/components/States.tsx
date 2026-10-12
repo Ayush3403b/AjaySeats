@@ -16,7 +16,7 @@ export function ProductGridSkeleton({ count = 6 }: { count?: number }) {
     <div role="status" aria-live="polite" className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
       <span className="sr-only">{t('states.loading')}</span>
       {Array.from({ length: count }, (_, i) => (
-        <div key={i} className="overflow-hidden rounded-2xl border border-line bg-card">
+        <div key={i} className="card-soft overflow-hidden">
           <div className="aspect-[4/3] shimmer" />
           <div className="space-y-3 p-5">
             <div className="h-4 w-3/4 shimmer rounded-md" />
@@ -30,8 +30,8 @@ export function ProductGridSkeleton({ count = 6 }: { count?: number }) {
 
 export function EmptyState({ title, body, action, icon }: { title: string; body?: string; action?: ReactNode; icon?: ReactNode }) {
   return (
-    <motion.div variants={scaleIn} initial="hidden" animate="show" className="mx-auto flex max-w-md flex-col items-center gap-4 rounded-2xl border border-line bg-card p-8 text-center">
-      <div className="text-muted" aria-hidden>
+    <motion.div variants={scaleIn} initial="hidden" animate="show" className="card-soft mx-auto flex max-w-md flex-col items-center gap-4 p-8 text-center">
+      <div className="icon-tile !h-16 !w-16 !rounded-2xl" aria-hidden>
         {icon ?? <SearchX size={40} />}
       </div>
       <h2 className="t-h3">{title}</h2>
@@ -44,7 +44,7 @@ export function EmptyState({ title, body, action, icon }: { title: string; body?
 export function ErrorState({ title, message, onRetry }: { title?: string; message: string; onRetry?: () => void }) {
   const { t } = useTranslation();
   return (
-    <motion.div role="alert" variants={scaleIn} initial="hidden" animate="show" className="mx-auto flex max-w-md flex-col items-center gap-4 rounded-2xl border border-sale/50 bg-card p-8 text-center">
+    <motion.div role="alert" variants={scaleIn} initial="hidden" animate="show" className="card-soft mx-auto flex max-w-md flex-col items-center gap-4 !border-sale/40 p-8 text-center">
       <TriangleAlert className="text-sale" size={40} aria-hidden />
       <h2 className="t-h3">{title ?? t('states.errorTitle')}</h2>
       <p className="text-muted">{message}</p>

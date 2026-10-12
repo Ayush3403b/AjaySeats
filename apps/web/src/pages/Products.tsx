@@ -6,6 +6,7 @@ import { SlidersHorizontal, Search } from 'lucide-react';
 import { MATERIALS, MATERIAL_META, SORT_OPTIONS, type Material, type PublicProduct, type SortOption } from '@pcs/shared';
 import { api, type CatalogueQuery } from '../api/index.js';
 import { Seo } from '../components/Seo.js';
+import { PageHeader } from '../components/Section.js';
 import { ProductCard } from '../components/ProductCard.js';
 import { ProductGridSkeleton, ErrorState, EmptyState } from '../components/States.js';
 import { FilterSheet } from '../components/FilterSheet.js';
@@ -66,7 +67,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
   return (
     <div className="space-y-7">
       <div>
-        <label htmlFor="flt-category" className="mb-2 block text-sm font-semibold">{t('catalogue.filters.category')}</label>
+        <label htmlFor="flt-category" className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('catalogue.filters.category')}</label>
         <select id="flt-category" className={inputClass} value={params.get('category') ?? ''} onChange={(e) => onChange({ category: e.target.value || undefined })}>
           <option value="">{t('catalogue.filters.all')}</option>
           {categories.map((c) => (
@@ -76,7 +77,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
       </div>
 
       <fieldset>
-        <legend className="mb-2 text-sm font-semibold">{t('catalogue.filters.material')}</legend>
+        <legend className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('catalogue.filters.material')}</legend>
         <div className="flex flex-wrap gap-2">
           {[undefined, ...MATERIALS].map((m) => {
             const active = (m ?? null) === (material ?? null) || (!m && !material);
@@ -88,7 +89,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
                 aria-pressed={active}
                 whileTap={reduced ? undefined : { scale: 0.94 }}
                 onClick={() => onChange({ material: m })}
-                className="tap-target relative rounded-full border border-line px-4 text-sm font-semibold text-ink"
+                className="tap-target relative rounded-full border border-line bg-surface px-4 text-sm font-semibold text-ink"
               >
                 {active ? <motion.span layoutId="material-chip" className="absolute inset-0 -z-0 rounded-full bg-primary" transition={{ type: 'spring', stiffness: 500, damping: 36 }} /> : null}
                 <span className={`relative ${active ? 'text-on-primary' : ''}`}>{label}</span>
@@ -99,7 +100,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
       </fieldset>
 
       <fieldset>
-        <legend className="mb-2 text-sm font-semibold">{t('catalogue.filters.colour')}</legend>
+        <legend className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('catalogue.filters.colour')}</legend>
         <div className="flex flex-wrap gap-3">
           {COLOUR_OPTIONS.map((c) => {
             const active = colour?.toLowerCase() === c.code.toLowerCase();
@@ -115,8 +116,8 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
                 onClick={() => onChange({ colour: active ? undefined : c.code })}
                 className="tap-target relative inline-flex items-center justify-center rounded-full"
               >
-                {active ? <motion.span layoutId="colour-filter-ring" className="absolute -inset-1 rounded-full border-2 border-accent" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
-                <span className="h-8 w-8 rounded-full border border-line" style={{ background: c.code }} aria-hidden />
+                {active ? <motion.span layoutId="colour-filter-ring" className="absolute -inset-1 rounded-full border-2 border-primary" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
+                <span className="h-8 w-8 rounded-full border-2 border-white shadow-[0_0_0_1px_var(--border)]" style={{ background: c.code }} aria-hidden />
               </motion.button>
             );
           })}
@@ -125,7 +126,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
 
       <div className="grid gap-4">
         <div>
-          <label htmlFor="flt-make" className="mb-2 block text-sm font-semibold">{t('catalogue.filters.make')}</label>
+          <label htmlFor="flt-make" className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('catalogue.filters.make')}</label>
           <select id="flt-make" className={inputClass} value={make} onChange={(e) => onChange({ make: e.target.value || undefined, model: undefined })}>
             <option value="">{t('catalogue.filters.anyMake')}</option>
             {makes.map((m) => (
@@ -134,7 +135,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
           </select>
         </div>
         <div>
-          <label htmlFor="flt-model" className="mb-2 block text-sm font-semibold">{t('catalogue.filters.model')}</label>
+          <label htmlFor="flt-model" className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('catalogue.filters.model')}</label>
           <select id="flt-model" className={inputClass} value={model} onChange={(e) => onChange({ model: e.target.value || undefined })}>
             <option value="">{t('catalogue.filters.anyModel')}</option>
             {models.map((m) => (
@@ -145,15 +146,15 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
       </div>
 
       <div>
-        <label htmlFor="flt-price" className="mb-2 flex items-center justify-between text-sm font-semibold">
+        <label htmlFor="flt-price" className="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.16em] text-ink">
           {t('catalogue.filters.price')}
-          <span className="font-mono text-muted">{price(sliderValue, lang)}</span>
+          <span className="font-mono normal-case tracking-normal text-muted">{price(sliderValue, lang)}</span>
         </label>
         <div className="relative h-11">
           <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-line" aria-hidden />
           <motion.div
             aria-hidden
-            className="absolute inset-x-0 top-1/2 h-2 origin-left -translate-y-1/2 rounded-full bg-gradient-to-r from-primary to-accent"
+            className="absolute inset-x-0 top-1/2 h-2 origin-left -translate-y-1/2 rounded-full bg-gradient-to-r from-primary to-teal"
             animate={{ scaleX: fill }}
             transition={{ type: 'spring', stiffness: 300, damping: 35 }}
           />
@@ -173,7 +174,7 @@ function FilterControls({ params, facets, categories, onChange }: FilterProps) {
         </div>
       </div>
 
-      <button type="button" onClick={() => onChange({ category: undefined, material: undefined, colour: undefined, make: undefined, model: undefined, maxPrice: undefined, q: undefined })} className="tap-target font-semibold text-accent underline-offset-4 hover:underline">
+      <button type="button" onClick={() => onChange({ category: undefined, material: undefined, colour: undefined, make: undefined, model: undefined, maxPrice: undefined, q: undefined })} className="tap-target font-semibold text-primary underline-offset-4 hover:underline">
         {t('catalogue.clear')}
       </button>
     </div>
@@ -230,13 +231,9 @@ export default function Products() {
   return (
     <>
       <Seo title={t('seo.productsTitle')} description={t('seo.productsDescription')} path="/products" />
-      <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-14">
-        <header className="mb-8 max-w-2xl">
-          <h1 className="t-h2 gradient-text">{t('catalogue.title')}</h1>
-          <p className="mt-2 text-muted">{t('catalogue.subtitle')}</p>
-        </header>
-
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <PageHeader eyebrow={t('catalogue.eyebrow')} title={t('catalogue.title')} subtitle={t('catalogue.subtitle')} />
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-10 md:px-6">
+        <div className="card-soft mb-8 flex flex-col gap-3 p-3 sm:flex-row sm:items-center">
           <div className="relative flex-1">
             <label htmlFor="cat-search" className="sr-only">{t('catalogue.search')}</label>
             <Search size={18} aria-hidden className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
@@ -264,14 +261,14 @@ export default function Products() {
 
         <div className="grid gap-8 md:grid-cols-[17rem_1fr]">
           <aside aria-label={t('catalogue.filters.title')} className="hidden md:block">
-            <div className="glass sticky top-24 rounded-2xl p-5">
+            <div className="card-soft sticky top-28 p-5">
               <FilterControls params={params} facets={facets.data?.items ?? []} categories={categories.data?.items ?? []} onChange={update} />
             </div>
           </aside>
 
           <section aria-live="polite" aria-label={t('catalogue.title')}>
             {data && !results.loading ? (
-              <p className="mb-4 text-sm text-muted">{t('catalogue.results', { count: data.total })}</p>
+              <p className="mb-5 text-sm font-semibold text-muted">{t('catalogue.results', { count: data.total })}</p>
             ) : null}
 
             {results.loading ? <ProductGridSkeleton /> : null}
@@ -289,7 +286,7 @@ export default function Products() {
                     initial="hidden"
                     animate="show"
                     exit={{ opacity: 0, transition: { duration: 0.12 } }}
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
+                    className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
                   >
                     {data.items.map((p) => (
                       <motion.div key={p.id} variants={fadeUp} className="h-full">
@@ -318,7 +315,7 @@ export default function Products() {
 
       <FilterSheet open={sheetOpen} onClose={() => setSheetOpen(false)} title={t('catalogue.filters.title')}>
         <FilterControls params={params} facets={facets.data?.items ?? []} categories={categories.data?.items ?? []} onChange={update} />
-        <div className="fixed inset-x-0 bottom-0 border-t border-line bg-surface p-4">
+        <div className="fixed inset-x-0 bottom-0 border-t border-line bg-surface/95 p-4 backdrop-blur">
           <Button className="w-full" onClick={() => setSheetOpen(false)}>
             {t('catalogue.filters.show', { count: data?.total ?? 0 })}
           </Button>

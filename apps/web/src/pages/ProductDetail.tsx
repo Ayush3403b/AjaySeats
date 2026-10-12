@@ -68,7 +68,7 @@ function Gallery({ product, selected, onSelect }: { product: PublicProduct; sele
   return (
     <div className="space-y-4">
       <div
-        className="glass relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-3xl"
+        className="card-soft relative aspect-[4/3] cursor-zoom-in overflow-hidden !rounded-[2rem] bg-mist"
         onPointerMove={(e) => {
           if (reduced || e.pointerType !== 'mouse') return;
           const r = e.currentTarget.getBoundingClientRect();
@@ -86,6 +86,8 @@ function Gallery({ product, selected, onSelect }: { product: PublicProduct; sele
           }
         }}
       >
+        <div aria-hidden className="bg-dots absolute inset-0 opacity-70" />
+        <div aria-hidden className="absolute inset-x-[22%] bottom-[12%] h-8 rounded-[50%] bg-ink/15 blur-lg" />
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={colour?.code ?? 'default'}
@@ -96,10 +98,10 @@ function Gallery({ product, selected, onSelect }: { product: PublicProduct; sele
             style={{ transformOrigin: origin }}
             className="absolute inset-0 p-10"
           >
-            <SeatSvg cushion={colour?.code} back={colour?.code} className="h-full w-full" />
+            <SeatSvg cushion={colour?.code} back={colour?.code} className="h-full w-full drop-shadow-[0_24px_28px_rgba(17,24,39,0.2)]" />
           </motion.div>
         </AnimatePresence>
-        <p className="absolute bottom-3 left-3 rounded-full bg-card/90 px-3 py-1 text-xs font-medium text-ink">{t('product.zoom')}</p>
+        <p className="absolute bottom-4 left-4 rounded-full border border-line bg-surface/90 px-3 py-1 text-xs font-medium text-ink shadow-soft">{t('product.zoom')}</p>
       </div>
       {product.colours.length > 1 ? (
         <div className="flex gap-3" role="group" aria-label={t('product.gallery')}>
@@ -112,10 +114,10 @@ function Gallery({ product, selected, onSelect }: { product: PublicProduct; sele
               onClick={() => onSelect(i)}
               className="tap-target relative inline-flex items-center justify-center rounded-xl"
             >
-              <span className="h-14 w-14 overflow-hidden rounded-xl border border-line p-1" style={{ background: 'var(--bg-elevated)' }}>
+              <span className="h-14 w-14 overflow-hidden rounded-xl border border-line bg-surface p-1 shadow-soft">
                 <SeatSvg cushion={c.code} back={c.code} className="h-full w-full" />
               </span>
-              {i === selected ? <motion.span layoutId="thumb-ring" className="absolute -inset-1 rounded-2xl border-2 border-accent" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
+              {i === selected ? <motion.span layoutId="thumb-ring" className="absolute -inset-1 rounded-2xl border-2 border-primary" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
             </button>
           ))}
         </div>
@@ -209,9 +211,9 @@ export default function ProductDetail() {
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-6 md:px-6 md:pt-10">
         <nav aria-label={t('a11y.breadcrumb')} className="mb-6 text-sm text-muted">
           <ol className="flex flex-wrap items-center gap-2">
-            <li><Link to="/products" className="text-muted hover:text-ink">{t('nav.products')}</Link></li>
+            <li><Link to="/products" className="text-muted no-underline hover:text-primary">{t('nav.products')}</Link></li>
             <li aria-hidden>/</li>
-            <li className="text-ink" aria-current="page">{name}</li>
+            <li className="font-medium text-ink" aria-current="page">{name}</li>
           </ol>
         </nav>
 
@@ -221,15 +223,16 @@ export default function ProductDetail() {
           </motion.div>
 
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="glass rounded-3xl p-6 md:p-8">
+            <div className="card-soft !rounded-[2rem] p-6 md:p-8">
               <div className="flex flex-wrap items-center gap-2">
                 <MaterialBadge material={p.material} />
                 <span className="font-mono text-xs text-muted">{t('product.sku')}: {p.sku}</span>
               </div>
-              <h1 className="t-h2 mt-4 leading-tight">{name}</h1>
+              <h1 className="t-h2 mt-4 leading-tight text-ink">{name}</h1>
+              <span aria-hidden className="accent-bar mt-4" />
 
               <div className="mt-5 flex flex-wrap items-baseline gap-3" aria-live="polite">
-                <span className="text-3xl font-extrabold text-ink">{prices.current}</span>
+                <span className="font-heading text-4xl font-semibold text-ink">{prices.current}</span>
                 {prices.regular ? (
                   <span className="text-base text-muted line-through">
                     <span className="sr-only">{t('product.regularPrice')}: </span>
@@ -237,7 +240,7 @@ export default function ProductDetail() {
                   </span>
                 ) : null}
                 {prices.onSale ? (
-                  <span className="rounded-full bg-sale px-2.5 py-1 text-xs font-bold text-on-primary">{t('product.salePrice')}</span>
+                  <span className="rounded-full bg-sale px-2.5 py-1 text-xs font-bold text-white">{t('product.salePrice')}</span>
                 ) : null}
               </div>
               <p className="mt-2 text-sm text-muted">{t('product.priceNote')}</p>
@@ -247,7 +250,7 @@ export default function ProductDetail() {
 
               {p.colours.length > 0 ? (
                 <div className="mt-6">
-                  <p className="mb-3 text-sm font-semibold">{t('product.colours')}</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-ink">{t('product.colours')}</p>
                   <div className="flex flex-wrap gap-3" role="radiogroup" aria-label={t('product.colours')}>
                     {p.colours.map((c, i) => {
                       const label = localized(c.name, lang);
@@ -263,8 +266,8 @@ export default function ProductDetail() {
                           onClick={() => setSelected(i)}
                           className="tap-target relative inline-flex items-center justify-center rounded-full"
                         >
-                          {i === selected ? <motion.span layoutId="pdp-swatch" className="absolute -inset-1.5 rounded-full border-2 border-accent" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
-                          <span className="h-9 w-9 rounded-full border border-line" style={{ background: c.code }} aria-hidden />
+                          {i === selected ? <motion.span layoutId="pdp-swatch" className="absolute -inset-1.5 rounded-full border-2 border-primary" transition={{ type: 'spring', stiffness: 500, damping: 34 }} /> : null}
+                          <span className="h-9 w-9 rounded-full border-2 border-white shadow-[0_0_0_1px_var(--border),0_6px_14px_-6px_rgba(17,24,39,0.4)]" style={{ background: c.code }} aria-hidden />
                         </motion.button>
                       );
                     })}
@@ -284,14 +287,14 @@ export default function ProductDetail() {
               <div className="mt-3 min-h-[1.5rem]" aria-live="polite">
                 <AnimatePresence mode="wait">
                   {flash ? (
-                    <motion.p key={flash} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="text-sm font-semibold text-accent">
+                    <motion.p key={flash} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="text-sm font-semibold text-primary">
                       {t(`product.${flash}`)}
                     </motion.p>
                   ) : null}
                 </AnimatePresence>
               </div>
               {whatsapp ? (
-                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-whatsapp px-5 font-semibold text-[#04130A] no-underline">
+                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-5 font-semibold text-[#04130A] no-underline shadow-[0_14px_30px_-14px_rgba(37,211,102,0.7)] hover:brightness-105">
                   <MessageCircle size={18} aria-hidden />
                   {t('product.whatsapp')}
                 </a>
@@ -304,7 +307,7 @@ export default function ProductDetail() {
 
         <RevealSection className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           <RevealItem>
-            <div className="glass rounded-3xl px-6 md:px-8">
+            <div className="card-soft !rounded-[2rem] px-6 md:px-8">
               <Accordion title={t('product.description')} defaultOpen>
                 <p className="leading-relaxed">{description}</p>
               </Accordion>
@@ -345,7 +348,8 @@ export default function ProductDetail() {
 
         {related.data && related.data.length > 0 ? (
           <section aria-labelledby="related-title" className="mt-16">
-            <h2 id="related-title" className="t-h2 mb-6">{t('product.related')}</h2>
+            <h2 id="related-title" className="t-h2 mb-3 text-ink">{t('product.related')}</h2>
+            <span aria-hidden className="accent-bar mb-8" />
             <Carousel label={t('product.related')}>
               {related.data.map((r) => (
                 <ProductCard key={r.id} product={r} />
@@ -359,10 +363,10 @@ export default function ProductDetail() {
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-muted">{name}</p>
-            <p className="text-lg font-extrabold">{prices.current}</p>
+            <p className="font-heading text-lg font-semibold">{prices.current}</p>
           </div>
           {whatsapp ? (
-            <a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label={t('product.whatsapp')} className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-whatsapp text-[#04130A]">
+            <a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label={t('product.whatsapp')} className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-whatsapp text-[#04130A]">
               <MessageCircle size={20} aria-hidden />
             </a>
           ) : null}

@@ -1,9 +1,10 @@
+import type { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, FileText } from 'lucide-react';
+import { ArrowRight, MessageCircle, FileText } from 'lucide-react';
 import { Seo } from '../components/Seo.js';
+import { PageHeader } from '../components/Section.js';
 import { Button, LinkButton } from '../components/motion/Button.js';
 import { RevealItem, RevealSection } from '../components/motion/Reveal.js';
-import { WordReveal } from '../components/motion/WordReveal.js';
 import { buildWhatsAppUrl } from '../lib/whatsapp.js';
 import { useSettings } from '../lib/useSettings.js';
 
@@ -15,22 +16,18 @@ export default function Contact() {
   return (
     <>
       <Seo title={t('seo.contactTitle')} description={t('seo.contactDescription')} path="/contact" />
-      <div className="mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16">
-        <header className="max-w-2xl">
-          <WordReveal as="h1" text={t('contact.title')} className="t-display gradient-text" onLoad />
-          <p className="mt-4 text-lg text-muted">{t('contact.subtitle')}</p>
-        </header>
-
-        <RevealSection className="mt-12 grid gap-6 md:grid-cols-2">
-          <RevealItem className="glass flex h-full flex-col gap-4 rounded-3xl p-7">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-whatsapp text-[#04130A]" aria-hidden>
-              <MessageCircle size={24} />
+      <PageHeader eyebrow={t('contact.eyebrow')} title={t('contact.title')} subtitle={t('contact.subtitle')} width="max-w-5xl" />
+      <div className="mx-auto max-w-5xl px-4 pb-24 pt-12 md:px-6 md:pt-16">
+        <RevealSection className="grid gap-6 md:grid-cols-2">
+          <RevealItem className="card-soft card-hover flex h-full flex-col gap-4 !rounded-[1.75rem] p-7 md:p-8">
+            <span className="icon-tile !h-14 !w-14 !rounded-2xl" style={{ '--tile': '#128c4a' } as CSSProperties} aria-hidden>
+              <MessageCircle size={26} />
             </span>
-            <h2 className="t-h3">{t('contact.whatsappTitle')}</h2>
-            <p className="text-muted">{t('contact.whatsappBody')}</p>
+            <h2 className="t-h3 text-ink">{t('contact.whatsappTitle')}</h2>
+            <p className="leading-relaxed text-muted">{t('contact.whatsappBody')}</p>
             <div className="mt-auto pt-2">
               {link ? (
-                <Button variant="whatsapp" onClick={() => window.open(link, '_blank', 'noopener,noreferrer')}>
+                <Button variant="whatsapp" icon={<MessageCircle size={18} aria-hidden />} onClick={() => window.open(link, '_blank', 'noopener,noreferrer')}>
                   {t('contact.whatsappCta')}
                 </Button>
               ) : (
@@ -39,14 +36,16 @@ export default function Contact() {
             </div>
           </RevealItem>
 
-          <RevealItem className="glass flex h-full flex-col gap-4 rounded-3xl p-7">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-on-primary" aria-hidden>
-              <FileText size={24} />
+          <RevealItem className="card-soft card-hover flex h-full flex-col gap-4 !rounded-[1.75rem] p-7 md:p-8">
+            <span className="icon-tile !h-14 !w-14 !rounded-2xl" aria-hidden>
+              <FileText size={26} />
             </span>
-            <h2 className="t-h3">{t('contact.quoteTitle')}</h2>
-            <p className="text-muted">{t('contact.quoteBody')}</p>
+            <h2 className="t-h3 text-ink">{t('contact.quoteTitle')}</h2>
+            <p className="leading-relaxed text-muted">{t('contact.quoteBody')}</p>
             <div className="mt-auto pt-2">
-              <LinkButton to="/request-quote" variant="secondary">{t('contact.quoteCta')}</LinkButton>
+              <LinkButton to="/request-quote" icon={<ArrowRight size={18} aria-hidden />}>
+                {t('contact.quoteCta')}
+              </LinkButton>
             </div>
           </RevealItem>
         </RevealSection>
