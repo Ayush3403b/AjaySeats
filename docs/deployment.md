@@ -21,7 +21,16 @@ The Vercel site and the Render API are different origins. Cookie sessions need `
 
 With the rewrite live, the browser calls the API through the Vercel domain, so requests are same-origin. Set `VITE_API_BASE_URL=/api/v1` (a relative path) for the Vercel build. Still check the session cookie and CORS behaviour end to end after the real host is set. Do not skip this check.
 
-The SPA rewrite in `vercel.json` excludes `/api/`, `/assets/`, the manifest, `robots.txt`, `sitemap.xml`, `sw.js`, `icon-*` and `favicon`, so these are served as static files.
+The SPA rewrite in `vercel.json` excludes `/api/`, `/assets/`, the manifest, `robots.txt`, `sitemap.xml`, `sw.js`, `og-image.png`, `icon-*` and `favicon`, so these are served as static files.
+
+### SEO files
+
+`VITE_SITE_URL` must be the absolute production origin (for example `https://www.example.com`, no trailing slash). At build time `apps/web/seo.plugin.ts` uses it to:
+
+- generate `sitemap.xml` (every public route in English and Hindi, with hreflang alternates) and `robots.txt` (pointing at the sitemap). Do not add these files to `public/`.
+- fill `%SITE_URL%` in `index.html`, so the static Open Graph and X/Twitter tags and the Organization/WebSite JSON-LD carry absolute URLs. WhatsApp and Facebook link previews read only these static tags.
+
+The build warns if `VITE_SITE_URL` is not an absolute URL. Product pages are not in the sitemap yet; to list them, add their slugs to `SITEMAP_ROUTES` from the API at build time. The share card is `apps/web/public/og-image.png` (1200×630).
 
 ## Checklist before go-live
 

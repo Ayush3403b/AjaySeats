@@ -53,7 +53,10 @@
     "scroll": "Scroll",
     "floatLeather": "Leather",
     "floatPvc": "PVC",
-    "floatFabric": "Fabric"
+    "floatFabric": "Fabric",
+    "trustFitment": "Fitment confirmed before we make it",
+    "trustPrices": "Public list prices",
+    "trustLanguages": "Quotes in English & Hindi"
   },
   "home": {
     "featuredTitle": "Featured collection",
@@ -81,7 +84,157 @@
     "ctaEyebrow": "Let’s talk",
     "ctaTitleLead": "Ready for seats that feel",
     "ctaTitleScript": "made just for you.",
-    "stripLabel": "Colours & makes"
+    "stripLabel": "Colours & makes",
+    "why": {
+      "eyebrow": "Why choose us",
+      "title": "Premium covers, without the guesswork",
+      "subtitle": "Every set is made to order for your car, and you see the quotation before anything is made.",
+      "fitTitle": "Made for your exact model",
+      "fitBody": "Share your make, model and year. We match the pattern to your car and confirm fitment with you before production starts.",
+      "chipMake": "Make",
+      "chipModel": "Model",
+      "chipYear": "Year",
+      "priceTitle": "Clear, public prices",
+      "priceBody": "Every product shows its list price in INR. Your final quotation is confirmed in writing before you commit.",
+      "materialTitle": "Five materials to compare",
+      "materialBody": "From rich leather to breathable fabric, compare finish and feel side by side.",
+      "colourTitle": "Your colour, your stitching",
+      "colourBody": "Pick from our colour range and the stitching options listed on each product.",
+      "languageTitle": "English and हिन्दी",
+      "languageBody": "Browse the site and receive your quotation in the language you prefer.",
+      "confirmTitle": "Nothing is final until you say so",
+      "confirmBody": "A quote request is an enquiry, not an order. We only start once you approve the quotation."
+    },
+    "categories": {
+      "eyebrow": "Shop by category",
+      "title": "Find the cover you need",
+      "subtitle": "Start with the type of cover, then filter by material, colour and car.",
+      "browse": "Browse category"
+    },
+    "transform": {
+      "eyebrow": "Before & after",
+      "title": "Give your cabin a fresh start",
+      "subtitle": "Drag the handle to see how a new cover changes the look of a tired seat.",
+      "before": "Before",
+      "after": "After",
+      "illustration": "Illustration",
+      "slider": "Compare before and after",
+      "beforeLabel": "Worn original seat",
+      "afterLabel": "Seat with a new tan cover",
+      "benefits": [
+        {
+          "h": "Protects your original seats",
+          "p": "A cover takes the daily wear, spills and sun, so the upholstery underneath stays in better shape."
+        },
+        {
+          "h": "Helps keep resale appeal",
+          "p": "Well-kept original seats can make your car more attractive when it is time to sell."
+        },
+        {
+          "h": "Easier to keep clean",
+          "p": "Choose wipe-clean PVC or leatherette, or soft fabric: pick the upkeep that suits you."
+        },
+        {
+          "h": "A new look without a new car",
+          "p": "Change the colour and feel of your cabin while keeping the car you love."
+        }
+      ]
+    },
+    "finder": {
+      "eyebrow": "Material match",
+      "title": "Not sure which material? Start here.",
+      "subtitle": "Pick what matters most and we suggest a starting point. You can always ask us for advice.",
+      "question": "What matters most to you?",
+      "options": {
+        "look": "The most premium look",
+        "colour": "A leather look in more colours",
+        "clean": "Easy cleaning for daily use",
+        "comfort": "Soft, breathable comfort"
+      },
+      "result": "Our suggestion",
+      "compare": "Compare all materials"
+    },
+    "care": {
+      "eyebrow": "Care guide",
+      "title": "Keep your covers looking new",
+      "subtitle": "Simple habits that help each material last longer.",
+      "note": "These are general tips. Always follow any care notes we share with your order.",
+      "leather": [
+        "Wipe dust and spills with a soft, slightly damp cloth.",
+        "Use a leather conditioner every few months to keep it supple.",
+        "Park in the shade when you can. Strong sun can fade and dry leather."
+      ],
+      "leatherette": [
+        "Clean with a damp cloth and a little mild soap.",
+        "Avoid harsh solvents and abrasive scrubbers.",
+        "Dry spills quickly to keep the surface even."
+      ],
+      "pvc": [
+        "Wipe down with mild soapy water, then dry with a soft cloth.",
+        "Skip bleach and strong chemical cleaners.",
+        "Keep sharp objects off the seats to avoid cuts."
+      ],
+      "fabric": [
+        "Vacuum regularly to lift dust and crumbs.",
+        "Blot spills straight away instead of rubbing them in.",
+        "Spot clean with a fabric cleaner, then let it air dry."
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions, answered",
+      "subtitle": "Can’t find what you need? Ask us on WhatsApp or send a quote request.",
+      "more": "Still have a question?",
+      "contact": "Contact us",
+      "items": [
+        {
+          "q": "Will the seat covers fit my car?",
+          "a": "Fitment depends on your exact make, model and year. Share these details when you request a quote and we confirm fitment before anything is made. If your model year is not listed, ask us first."
+        },
+        {
+          "q": "How do I get a price for my car?",
+          "a": "Every product shows a public list price in INR. For your final price, send a quote request with your car details and choices, and we reply with a quotation for your selection."
+        },
+        {
+          "q": "Is a quote request the same as an order?",
+          "a": "No. A quote request is an enquiry. An order exists only after you confirm a quotation we have sent you and we accept it."
+        },
+        {
+          "q": "Which material should I choose?",
+          "a": "Leather gives the most premium look, leatherette offers a leather look in more colours, PVC is the easiest to wipe clean, and fabric is soft and breathable. The materials guide compares them side by side."
+        },
+        {
+          "q": "Can I choose my own colour and stitching?",
+          "a": "Yes. Choose from the colours listed on each product, and from its stitching options where they are listed. You can preview colours in the colour studio on this page."
+        },
+        {
+          "q": "Will the colour look exactly like it does on screen?",
+          "a": "Colours on screen can differ slightly from the finished product because of screen settings and material batches. Ask us on WhatsApp if you would like more detail before you confirm."
+        },
+        {
+          "q": "Can I get my quotation in Hindi?",
+          "a": "Yes. The whole site is available in English and Hindi, and you can choose your preferred language when you request a quote."
+        },
+        {
+          "q": "How do I care for my seat covers?",
+          "a": "Most covers need only regular wiping or vacuuming. See the care guide on this page for simple tips for each material."
+        },
+        {
+          "q": "What is the quickest way to reach you?",
+          "a": "WhatsApp is the quickest way. Send your car details, and photos of your seats if you have them. For a formal quotation, use the quote request form."
+        }
+      ]
+    },
+    "seoBlock": {
+      "eyebrow": "Seat cover guide",
+      "title": "Car seat covers, made to order",
+      "p1": "{{brand}} makes car seat covers to order in leather, leatherette, PVC and fabric. Each set is matched to your car’s make, model and year, and we confirm fitment with you before production starts.",
+      "p2": "Browse seat covers with public list prices in INR, preview colours and compare materials before you ask for a quotation. When you are ready, send a quote request or message us on WhatsApp in English or Hindi.",
+      "makes": "Listed fitment currently includes {{makes}}. Fitment depends on the exact model and year, so confirm with us before you order.",
+      "popular": "Popular searches",
+      "materialLink": "{{name}} seat covers",
+      "makeLink": "Seat covers for {{make}}"
+    }
   },
   "catalogue": {
     "eyebrow": "Catalogue",
@@ -415,21 +568,25 @@
     "general": "Hello, I would like a quote for a seat cover for my car."
   },
   "seo": {
-    "homeTitle": "Premium Seat Covers | Leather, Leatherette, PVC and Fabric",
-    "homeDescription": "Premium car seat covers in leather, leatherette, PVC and fabric. Public prices, colour options and quote requests in English and Hindi.",
-    "productsTitle": "Seat cover catalogue",
-    "productsDescription": "Browse seat covers by material, colour and car make. Public prices in INR.",
-    "materialsTitle": "Seat cover materials",
-    "materialsDescription": "Compare leather, leatherette, PVC, fabric and other seat cover materials.",
-    "aboutTitle": "About us",
-    "aboutDescription": "How we make and quote seat covers, made to order.",
+    "homeTitle": "Premium Seat Covers | Custom Car Seat Covers, Made to Order",
+    "homeDescription": "Made-to-order car seat covers in leather, leatherette, PVC and fabric. Fitment confirmed for your model, public prices in INR, and quotes in English or Hindi.",
+    "productsTitle": "Shop Car Seat Covers by Material, Colour and Car",
+    "productsDescription": "Browse car seat covers by material, colour and car make. See public list prices in INR and request a quote for your exact model.",
+    "materialsTitle": "Seat Cover Materials: Leather, Leatherette, PVC and Fabric",
+    "materialsDescription": "Compare leather, leatherette, PVC and fabric seat covers by finish, feel and best use, and choose the right material for your car.",
+    "aboutTitle": "About Us: How We Make Seat Covers to Order",
+    "aboutDescription": "Share your car, pick a material and colour, approve your quotation, then we make it. See how our made-to-order seat covers work.",
     "quoteTitle": "Request a seat cover quote",
-    "quoteDescription": "Send your car details and product choices to request a quotation. This is a request, not an order.",
-    "contactTitle": "Contact",
-    "contactDescription": "Contact us on WhatsApp or request a formal quotation.",
+    "quoteDescription": "Send your car make, model and year with your product choices to request a seat cover quotation. This is a request, not an order.",
+    "contactTitle": "Contact Us",
+    "contactDescription": "Message us on WhatsApp with your car details and seat photos, or request a formal seat cover quotation.",
     "privacyTitle": "Privacy notice",
     "termsTitle": "Terms of use",
-    "notFoundTitle": "Page not found"
+    "notFoundTitle": "Page not found",
+    "homeKeywords": "car seat covers, premium seat covers, custom car seat covers, leather seat covers, leatherette seat covers, PVC seat covers, fabric seat covers, made to order seat covers, seat covers India",
+    "imageAlt": "Premium Seat Covers: made-to-order car seat covers in leather, leatherette, PVC and fabric",
+    "privacyDescription": "How we collect and use the details you share when you request a seat cover quotation.",
+    "termsDescription": "Terms for using this website, including list prices, quotations, orders and fitment."
   },
   "admin": {
     "title": "Admin",

@@ -8,7 +8,7 @@
       "destination": "https://REPLACE-WITH-API-HOST/api/:path*"
     },
     {
-      "source": "/((?!api/|assets/|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml|sw\\.js|icon-|favicon).*)",
+      "source": "/((?!api/|assets/|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml|sw\\.js|og-image\\.png|icon-|favicon).*)",
       "destination": "/index.html"
     }
   ],

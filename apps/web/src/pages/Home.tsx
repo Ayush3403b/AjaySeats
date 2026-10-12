@@ -8,18 +8,14 @@ import {
   BadgeCheck,
   Car,
   ChevronRight,
-  Droplets,
+  CircleCheck,
   FileText,
-  Gem,
-  Layers,
   MessageCircle,
   Palette,
   ShieldCheck,
-  Sparkles,
-  Wind,
   type LucideIcon,
 } from 'lucide-react';
-import { MATERIALS, MATERIAL_META, type Material, type PublicProduct } from '@pcs/shared';
+import { MATERIALS, MATERIAL_META, type PublicProduct } from '@pcs/shared';
 import { api } from '../api/index.js';
 import { SUPPORTED_LANGUAGES } from '../i18n/index.js';
 import { Seo } from '../components/Seo.js';
@@ -39,8 +35,14 @@ import { currentLang, localized } from '../lib/format.js';
 import { COLOUR_OPTIONS } from '../lib/colours.js';
 import { buildWhatsAppUrl } from '../lib/whatsapp.js';
 import { useSettings } from '../lib/useSettings.js';
-
-const MATERIAL_ICON: Record<Material, LucideIcon> = { leather: Gem, leatherette: Layers, pvc: Droplets, fabric: Wind, other: Sparkles };
+import { MATERIAL_ICON } from '../lib/materialStyle.js';
+import { WhyUs } from './home/WhyUs.js';
+import { ShopByCategory } from './home/Categories.js';
+import { MaterialFinder } from './home/MaterialFinder.js';
+import { Transform } from './home/Transform.js';
+import { CareGuide } from './home/CareGuide.js';
+import { Faq, faqJsonLd, type FaqItem } from './home/Faq.js';
+import { SeoContent } from './home/SeoContent.js';
 
 const STEPS: ReadonlyArray<{ key: 'One' | 'Two' | 'Three' | 'Four'; icon: LucideIcon; colour: string }> = [
   { key: 'One', icon: Car, colour: 'var(--primary)' },
@@ -100,7 +102,15 @@ function Hero() {
               {t('hero.quote')}
             </LinkButton>
           </div>
-          <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-6">
+          <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2.5">
+            {(['trustFitment', 'trustPrices', 'trustLanguages'] as const).map((key) => (
+              <li key={key} className="inline-flex items-center gap-2 text-sm font-medium text-ink">
+                <CircleCheck size={17} aria-hidden className="shrink-0 text-highlight" />
+                {t(`hero.${key}`)}
+              </li>
+            ))}
+          </ul>
+          <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-6">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse justify-end gap-2">
                 <dt className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">{s.label}</dt>
@@ -401,17 +411,28 @@ function CtaBand() {
 }
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const everything = useAsync(() => api.getProducts({ pageSize: 48 }), []);
+  const products = everything.data?.items ?? [];
+  // Keyed on the language: returnObjects builds a new array on every call, which would re-insert the JSON-LD each render.
+  const faqItems = useMemo(() => t('home.faq.items', { returnObjects: true }) as FaqItem[], [t, i18n.language]);
+  const jsonLd = useMemo(() => faqJsonLd(faqItems), [faqItems]);
   return (
     <>
-      <Seo title={t('seo.homeTitle')} description={t('seo.homeDescription')} path="/" />
+      <Seo title={t('seo.homeTitle')} description={t('seo.homeDescription')} keywords={t('seo.homeKeywords')} path="/" jsonLd={jsonLd} />
       <Hero />
-      <CompatibilityStrip products={everything.data?.items ?? []} />
+      <CompatibilityStrip products={products} />
       <FeaturedCollection />
+      <WhyUs />
+      <ShopByCategory />
       <HowItWorks />
       <ColourStudio />
       <MaterialsHighlight />
+      <MaterialFinder />
+      <Transform />
+      <CareGuide />
+      <Faq items={faqItems} />
+      <SeoContent products={products} />
       <CtaBand />
     </>
   );

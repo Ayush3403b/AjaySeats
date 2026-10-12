@@ -39,4 +39,14 @@ describe('translation files', () => {
     expect(JSON.parse(enLeaves.get('legal.privacy.sections') ?? '[]')).toHaveLength(7);
     expect(JSON.parse(hiLeaves.get('legal.terms.sections') ?? '[]')).toHaveLength(7);
   });
+
+  it('keep the home page lists the same length in both languages', () => {
+    const lists = ['home.faq.items', 'home.transform.benefits', 'home.care.leather', 'home.care.leatherette', 'home.care.pvc', 'home.care.fabric'];
+    for (const key of lists) {
+      const enList = JSON.parse(enLeaves.get(key) ?? '[]') as unknown[];
+      const hiList = JSON.parse(hiLeaves.get(key) ?? '[]') as unknown[];
+      expect(enList.length, key).toBeGreaterThan(0);
+      expect(hiList.length, key).toBe(enList.length);
+    }
+  });
 });

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, FileText, MessageCircle, ShoppingBag, Check } from 'lucide-react';
 import { MATERIAL_META, type PublicProduct } from '@pcs/shared';
 import { api, ApiError } from '../api/index.js';
-import { Seo } from '../components/Seo.js';
+import { Seo, absoluteUrl, languageUrls } from '../components/Seo.js';
 import { SeatSvg } from '../components/SeatSvg.js';
 import { MaterialBadge } from '../components/MaterialBadge.js';
 import { Carousel } from '../components/Carousel.js';
@@ -190,24 +190,52 @@ export default function ProductDetail() {
     window.setTimeout(() => setFlash(null), 2400);
   };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name,
-    description,
-    sku: p.sku,
-    category: localized(p.category.name, lang),
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'INR',
-      price: schemaPrice(p.salePriceMinor ?? p.priceMinor),
-      availability: p.availability === 'in_stock' ? 'https://schema.org/InStock' : p.availability === 'unavailable' ? 'https://schema.org/OutOfStock' : 'https://schema.org/PreOrder',
+  const path = `/products/${p.slug}`;
+  const url = languageUrls(path, lang).canonical;
+  const images = [...p.images].sort((a, b) => a.order - b.order);
+  // Everything here is visible on the page: name, SKU, material badge, colour swatches, gallery, price and breadcrumb.
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name,
+      description,
+      sku: p.sku,
+      url,
+      brand: { '@type': 'Brand', name: t('app.name') },
+      category: localized(p.category.name, lang),
+      material: t(`materials.${p.material}.name`),
+      ...(images.length > 0 ? { image: images.map((img) => absoluteUrl(img.url)) } : {}),
+      ...(p.colours.length > 0 ? { color: p.colours.map((c) => localized(c.name, lang)).join(', ') } : {}),
+      offers: {
+        '@type': 'Offer',
+        url,
+        priceCurrency: 'INR',
+        price: schemaPrice(p.salePriceMinor ?? p.priceMinor),
+        itemCondition: 'https://schema.org/NewCondition',
+        availability: p.availability === 'in_stock' ? 'https://schema.org/InStock' : p.availability === 'unavailable' ? 'https://schema.org/OutOfStock' : 'https://schema.org/PreOrder',
+      },
     },
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t('nav.products'), item: absoluteUrl('/products') },
+        { '@type': 'ListItem', position: 2, name, item: url },
+      ],
+    },
+  ];
 
   return (
     <>
-      <Seo title={localized(p.seo.title, lang)} description={localized(p.seo.description, lang)} path={`/products/${p.slug}`} jsonLd={jsonLd} />
+      <Seo
+        title={localized(p.seo.title, lang)}
+        description={localized(p.seo.description, lang)}
+        path={path}
+        jsonLd={jsonLd}
+        image={images[0]?.url}
+        imageAlt={images[0] ? localized(images[0].alt, lang) || name : undefined}
+      />
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-6 md:px-6 md:pt-10">
         <nav aria-label={t('a11y.breadcrumb')} className="mb-6 text-sm text-muted">
           <ol className="flex flex-wrap items-center gap-2">

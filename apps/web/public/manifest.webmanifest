@@ -1,7 +1,10 @@
 {
   "name": "Premium Seat Covers",
   "short_name": "Seat Covers",
-  "description": "Premium car seat covers in leather, leatherette, PVC and fabric. Quotes in English and Hindi.",
+  "description": "Made-to-order car seat covers in leather, leatherette, PVC and fabric. Fitment confirmed for your model and quotes in English or Hindi.",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle"],
   "start_url": "/?source=pwa",
   "scope": "/",
   "id": "/",

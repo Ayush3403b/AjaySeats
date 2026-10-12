@@ -21,7 +21,7 @@ function LegalPage({ kind }: { kind: 'privacy' | 'terms' }) {
 
   return (
     <>
-      <Seo title={t(`seo.${kind}Title`)} description={t(`legal.${kind}Title`)} path={`/${kind}`} />
+      <Seo title={t(`seo.${kind}Title`)} description={t(`seo.${kind}Description`)} path={`/${kind}`} />
       <PageHeader eyebrow={t('legal.eyebrow')} title={title} width="max-w-3xl">
         <p className="mt-6 text-sm font-medium text-muted">{t('legal.updated', { date })}</p>
       </PageHeader>

@@ -1,11 +1,13 @@
 import { defineConfig } from 'vitest/config';
+import { loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
+import { seoFiles } from './seo.plugin.js';
 
 // Dev: /api/* is proxied to the local API so the browser stays same-origin (no CORS, cookies just work).
 const apiTarget = process.env.API_PROXY_TARGET ?? 'http://localhost:4000';
 
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(({ mode }) => ({
+  plugins: [react(), seoFiles(loadEnv(mode, process.cwd(), 'VITE_').VITE_SITE_URL)],
   // Allow the sandbox preview host (a leading dot matches all subdomains) plus localhost. Not a wildcard.
   server: {
     host: '0.0.0.0',
@@ -42,4 +44,4 @@ export default defineConfig({
     include: ['src/**/*.test.{ts,tsx}'],
     css: false,
   },
-});
+}));
